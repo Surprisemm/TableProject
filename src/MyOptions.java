@@ -9,11 +9,14 @@ public class MyOptions extends JPanel {
     public MyOptions() {
         super();
 
-        setLayout(new MigLayout("nogrid"));
+        setLayout(new MigLayout("nogrid, gap 20"));
+        Font font = new Font("Comic Sans MS", Font.PLAIN, 18);
+
 
         JLabel rowLable = new JLabel("Строк: ");
         JLabel colLable = new JLabel("Столбцов: ");
         JLabel roundingText = new JLabel(" знаков после запятой ");
+
 
         JCheckBox topHeader = new JCheckBox("Добавить строку заголовков");
         JCheckBox leftHeader = new JCheckBox("Добавить столбец заголовков");
@@ -27,8 +30,8 @@ public class MyOptions extends JPanel {
         JSpinner colValue = new JSpinner(spinnerModel);
         JSpinner roundingValue = new JSpinner(spinnerModel);
 
-        rowValue.setPreferredSize(new Dimension(200,rowValue.getPreferredSize().height));
-        colValue.setPreferredSize(new Dimension(200,colValue.getPreferredSize().height));
+        rowValue.setPreferredSize(new Dimension(200,rowValue.getPreferredSize().height + 5));
+        colValue.setPreferredSize(new Dimension(200,colValue.getPreferredSize().height + 5));
 
         JComboBox rightFooterCombo = new JComboBox<>();
         JComboBox bottomFooterCombo = new JComboBox<>();
@@ -38,28 +41,38 @@ public class MyOptions extends JPanel {
 
         //тут настроить внешний вид
 
+        // Установка шрифта для компонентов с текстом
+        rowLable.setFont(font);
+        colLable.setFont(font);
+        roundingText.setFont(font);
+        topHeader.setFont(font);
+        leftHeader.setFont(font);
+        rightFooter.setFont(font);
+        bottomFooter.setFont(font);
+        roundingCheck.setFont(font);
+
         // 1 строка
         add(rowLable);
-        add(rowValue);
-        add(colLable);
-        add(colValue);
+        add(rowValue, "gap 10");
+        add(colLable, "gap 10");
+        add(colValue, "gap 10");
 
         // 2 строка
         add(topHeader, "newline");
-        add(leftHeader);
+        add(leftHeader, "gap 10");
 
         // 3 str
         add(bottomFooter, "newline");
-        add(bottomFooterCombo);
+        add(bottomFooterCombo, "gap 10");
 
         // 4 str
         add(rightFooter, "newline");
-        add(rightFooterCombo);
+        add(rightFooterCombo, "gap 10");
 
         //5 str
         add(roundingCheck, "newline");
-        add(roundingValue);
-        add(roundingText);
+        add(roundingValue, "gap 10");
+        add(roundingText, "gap 10");
 
 
 

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="acfd2cd0-522f-4c5b-9311-c49538053e08" name="Changes" comment="MyOptions 50% внешнего вида">
+    <list default="true" id="acfd2cd0-522f-4c5b-9311-c49538053e08" name="Changes" comment="MyOptions 54% внешнего вида">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainUi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyOptions.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +60,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684490232609</updated>
-      <workItem from="1684490234179" duration="6194000" />
+      <workItem from="1684490234179" duration="8352000" />
     </task>
     <task id="LOCAL-00001" summary="commit test">
       <created>1684490461798</created>
@@ -84,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684497091933</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="MyOptions 54% внешнего вида">
+      <created>1684499001464</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1684499001464</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,6 +111,7 @@
     <MESSAGE value="commit test" />
     <MESSAGE value="commit test 2" />
     <MESSAGE value="MyOptions 50% внешнего вида" />
-    <option name="LAST_COMMIT_MESSAGE" value="MyOptions 50% внешнего вида" />
+    <MESSAGE value="MyOptions 54% внешнего вида" />
+    <option name="LAST_COMMIT_MESSAGE" value="MyOptions 54% внешнего вида" />
   </component>
 </project>
