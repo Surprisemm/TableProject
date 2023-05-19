@@ -6,7 +6,8 @@ import java.awt.event.ActionListener;
 
 public class MainUi extends JFrame {
 
-    private int windowDim = 512;
+    private int windowDimWidth = 800;
+    private int windowDimHeight = 500;
     private int cellMinHeight = 20;
 
     private MyTable table;
@@ -19,7 +20,7 @@ public class MainUi extends JFrame {
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension dimension = tk.getScreenSize();
 
-        this.setBounds(dimension.width / 2 - windowDim / 2, dimension.height / 2 - windowDim / 2, windowDim, windowDim);
+        this.setBounds(dimension.width / 2 - windowDimWidth / 2, dimension.height / 2 - windowDimHeight / 2, windowDimWidth, windowDimHeight);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel mainPanel = new JPanel();

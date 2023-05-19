@@ -9,7 +9,7 @@ public class MyOptions extends JPanel {
     public MyOptions() {
         super();
 
-        setLayout(new MigLayout("gapx 25, gapy 5"));
+        setLayout(new MigLayout("nogrid"));
 
         JLabel rowLable = new JLabel("Строк: ");
         JLabel colLable = new JLabel("Столбцов: ");
@@ -27,13 +27,16 @@ public class MyOptions extends JPanel {
         JSpinner colValue = new JSpinner(spinnerModel);
         JSpinner roundingValue = new JSpinner(spinnerModel);
 
+        rowValue.setPreferredSize(new Dimension(200,rowValue.getPreferredSize().height));
+        colValue.setPreferredSize(new Dimension(200,colValue.getPreferredSize().height));
+
         JComboBox rightFooterCombo = new JComboBox<>();
         JComboBox bottomFooterCombo = new JComboBox<>();
 
         rightFooterCombo.setPreferredSize(new Dimension(200, rightFooterCombo.getPreferredSize().height));
         bottomFooterCombo.setPreferredSize(new Dimension(200, bottomFooterCombo.getPreferredSize().height));
 
-        //тут настроить внешний вид потом
+        //тут настроить внешний вид
 
         // 1 строка
         add(rowLable);
@@ -57,6 +60,8 @@ public class MyOptions extends JPanel {
         add(roundingCheck, "newline");
         add(roundingValue);
         add(roundingText);
+
+
 
         setVisible(true);
 
