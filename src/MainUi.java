@@ -25,9 +25,13 @@ public class MainUi extends JFrame {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 
+        MyOptions optionsWindow = new MyOptions();
+
+        mainPanel.add(optionsWindow);
+
 //-----------------------------------------------------------------------
 
-        JMenuBar menuBar = new JMenuBar();
+      /*  JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("Файл");
         JMenuItem menuItem = new JMenuItem("Старт");
         fileMenu.add(menuItem);
@@ -84,7 +88,7 @@ public class MainUi extends JFrame {
         // Добавление таблицы на панель
         tablePanel.add(new JScrollPane(table));
 
-        mainPanel.add(tablePanel);
+        mainPanel.add(tablePanel);*/
 //------------------------------------------------------------------------
 
         // тут будет класс с окном настройки панели, который вернет DefaultTableModel
