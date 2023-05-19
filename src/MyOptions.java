@@ -1,10 +1,13 @@
+import com.sun.applet2.preloader.event.ConfigEvent;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ItemEvent;
 
 public class MyOptions extends JPanel {
 
+    private int maxElSize = 30;
 
     public MyOptions() {
         super();
@@ -30,14 +33,64 @@ public class MyOptions extends JPanel {
         JSpinner colValue = new JSpinner(spinnerModel);
         JSpinner roundingValue = new JSpinner(spinnerModel);
 
-        rowValue.setPreferredSize(new Dimension(200,rowValue.getPreferredSize().height + 5));
-        colValue.setPreferredSize(new Dimension(200,colValue.getPreferredSize().height + 5));
+        roundingValue.setEnabled(false);
+
+        rowValue.setPreferredSize(new Dimension(200, maxElSize));
+        colValue.setPreferredSize(new Dimension(200, maxElSize));
+        roundingValue.setPreferredSize(new Dimension(20, maxElSize));
 
         JComboBox rightFooterCombo = new JComboBox<>();
         JComboBox bottomFooterCombo = new JComboBox<>();
 
-        rightFooterCombo.setPreferredSize(new Dimension(200, rightFooterCombo.getPreferredSize().height));
-        bottomFooterCombo.setPreferredSize(new Dimension(200, bottomFooterCombo.getPreferredSize().height));
+        rightFooterCombo.setEnabled(false);
+        bottomFooterCombo.setEnabled(false);
+
+        // Заполнение JComboBox элементами
+        DefaultComboBoxModel<String> footerModel = new DefaultComboBoxModel<>();
+        footerModel.addElement("Сумма");
+        footerModel.addElement("Количество");
+        footerModel.addElement("Среднее");
+        footerModel.addElement("Максимум");
+        footerModel.addElement("Минимум");
+        footerModel.addElement("Сумма квадратов");
+
+        DefaultComboBoxModel<String> footerModel_2 = new DefaultComboBoxModel<>();
+        for (int i = 0; i < footerModel.getSize(); i++) {
+            footerModel_2.addElement(footerModel.getElementAt(i));
+        }
+
+        rightFooterCombo.setModel(footerModel);
+        bottomFooterCombo.setModel(footerModel_2);
+
+        rightFooterCombo.setPreferredSize(new Dimension(200, maxElSize));
+        bottomFooterCombo.setPreferredSize(new Dimension(200, maxElSize));
+
+        // Панель с кнопками ---------------------------------------
+        JPanel buttonsPanel = new JPanel();
+        buttonsPanel.setLayout(new MigLayout("nogrid, gap 20"));
+
+        JButton insButton = new JButton("Вставить");
+        JButton cancelButton = new JButton("Отмена");
+
+        buttonsPanel.add(insButton);
+        buttonsPanel.add(cancelButton);
+        //----------------------------------------------------------
+
+        // Взаимодействие элементов
+        roundingCheck.addItemListener(e -> {
+            boolean isSelected = e.getStateChange() == ItemEvent.SELECTED;
+            roundingValue.setEnabled(isSelected);
+        });
+
+        rightFooter.addItemListener(e -> {
+            boolean isSelected = e.getStateChange() == ItemEvent.SELECTED;
+            rightFooterCombo.setEnabled(isSelected);
+        });
+
+        bottomFooter.addItemListener(e -> {
+            boolean isSelected = e.getStateChange() == ItemEvent.SELECTED;
+            bottomFooterCombo.setEnabled(isSelected);
+        });
 
         //тут настроить внешний вид
 
@@ -50,6 +103,10 @@ public class MyOptions extends JPanel {
         rightFooter.setFont(font);
         bottomFooter.setFont(font);
         roundingCheck.setFont(font);
+        rightFooterCombo.setFont(font);
+        bottomFooterCombo.setFont(font);
+        insButton.setFont(font);
+        cancelButton.setFont(font);
 
         // 1 строка
         add(rowLable);
@@ -69,14 +126,18 @@ public class MyOptions extends JPanel {
         add(rightFooter, "newline");
         add(rightFooterCombo, "gap 10");
 
-        //5 str
+        // 5 str
         add(roundingCheck, "newline");
         add(roundingValue, "gap 10");
         add(roundingText, "gap 10");
 
+        // 6 str
+        add(buttonsPanel, "newline, span, alignx right");
 
 
         setVisible(true);
 
     }
+
+
 }

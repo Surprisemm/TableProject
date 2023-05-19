@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 
 public class MainUi extends JFrame {
 
-    private int windowDimWidth = 800;
-    private int windowDimHeight = 500;
+    public int windowDimWidth = 800;
+    public int windowDimHeight = 500;
     private int cellMinHeight = 20;
 
     private MyTable table;
@@ -29,6 +29,8 @@ public class MainUi extends JFrame {
         MyOptions optionsWindow = new MyOptions();
 
         mainPanel.add(optionsWindow);
+
+    //    System.out.println(optionsWindow.getRowValue());
 
 //-----------------------------------------------------------------------
 
