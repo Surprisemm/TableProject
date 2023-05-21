@@ -3,17 +3,21 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
 public class MyOptions extends JPanel {
 
     private int maxElSize = 30;
+    private OptionsCallback callback;
 
     public MyOptions() {
         super();
 
         setLayout(new MigLayout("nogrid, gap 20"));
         Font font = new Font("Comic Sans MS", Font.PLAIN, 18);
+        setPreferredSize(new Dimension(640, 340));
 
 
         JLabel rowLable = new JLabel("Строк: ");
@@ -27,12 +31,17 @@ public class MyOptions extends JPanel {
         JCheckBox bottomFooter = new JCheckBox("Добавить строку итогов:");
         JCheckBox roundingCheck = new JCheckBox("Округлять результат с точностью до ");
 
-        SpinnerModel spinnerModel = new SpinnerNumberModel(0,0,100,1);
+        SpinnerModel rowModel = new SpinnerNumberModel(0, 0, 100, 1);
+        SpinnerModel colModel = new SpinnerNumberModel(0, 0, 100, 1);
+        SpinnerModel roundingModel = new SpinnerNumberModel(0, 0, 100, 1);
 
-        JSpinner rowValue = new JSpinner(spinnerModel);
-        JSpinner colValue = new JSpinner(spinnerModel);
-        JSpinner roundingValue = new JSpinner(spinnerModel);
+        JSpinner rowValue = new JSpinner(rowModel);
+        JSpinner colValue = new JSpinner(colModel);
+        JSpinner roundingValue = new JSpinner(roundingModel);
 
+        rowValue.setValue(5);
+        colValue.setValue(4);
+        roundingValue.setValue(2);
         roundingValue.setEnabled(false);
 
         rowValue.setPreferredSize(new Dimension(200, maxElSize));
@@ -74,6 +83,24 @@ public class MyOptions extends JPanel {
 
         buttonsPanel.add(insButton);
         buttonsPanel.add(cancelButton);
+
+        insButton.addActionListener(e -> {
+            if (callback != null) {
+                int rowData = (int) rowValue.getValue();
+                int colData = (int) colValue.getValue();
+                int roundingData = (int) roundingValue.getValue();
+                callback.onInsertButtonClicked(rowData, colData, roundingData);
+                closeWindow();
+            }
+        });
+
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Закрыть родительское окно (JDialog)
+                closeWindow();
+            }
+        });
         //----------------------------------------------------------
 
         // Взаимодействие элементов
@@ -134,10 +161,27 @@ public class MyOptions extends JPanel {
         // 6 str
         add(buttonsPanel, "newline, span, alignx right");
 
-
         setVisible(true);
 
     }
+
+    public interface OptionsCallback {
+        void onInsertButtonClicked(int rowData, int colData, int roundingData);
+    }
+
+    public void setOptionsCallback(OptionsCallback callback) {
+        this.callback = callback;
+    }
+
+    public void closeWindow() {
+        Window window = SwingUtilities.getWindowAncestor(this);
+        if (window instanceof Dialog) {
+            Dialog dialog = (Dialog) window;
+            dialog.dispose();
+        }
+    }
+
+
 
 
 }

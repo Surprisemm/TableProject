@@ -4,13 +4,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainUi extends JFrame {
+public class MainUi extends JFrame implements MyOptions.OptionsCallback {
 
     public int windowDimWidth = 800;
     public int windowDimHeight = 500;
-    private int cellMinHeight = 20;
 
     private MyTable table;
+    private MyOptions optionsWindow = new MyOptions();
 
 
     public MainUi(){
@@ -26,82 +26,54 @@ public class MainUi extends JFrame {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 
-        MyOptions optionsWindow = new MyOptions();
 
-        mainPanel.add(optionsWindow);
 
     //    System.out.println(optionsWindow.getRowValue());
 
 //-----------------------------------------------------------------------
 
-      /*  JMenuBar menuBar = new JMenuBar();
+        JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("Файл");
         JMenuItem menuItem = new JMenuItem("Старт");
         fileMenu.add(menuItem);
-
-
-        JCheckBoxMenuItem topHeaderMenuItem = new JCheckBoxMenuItem("Заголовки сверху");
-        JCheckBoxMenuItem leftHeaderMenuItem = new JCheckBoxMenuItem("Заголовки слева");
-        JCheckBoxMenuItem bottomFooterMenuItem = new JCheckBoxMenuItem("Итоги снизу");
-        JCheckBoxMenuItem rightFooterMenuItem = new JCheckBoxMenuItem("Итоги справа");
-
-        topHeaderMenuItem.addActionListener(e -> table.setShowTopHeaders(topHeaderMenuItem.isSelected()));
-        leftHeaderMenuItem.addActionListener(e -> table.setShowLeftHeaders(leftHeaderMenuItem.isSelected()));
-        bottomFooterMenuItem.addActionListener(e -> table.setShowBottomFooters(bottomFooterMenuItem.isSelected()));
-        rightFooterMenuItem.addActionListener(e -> table.setShowRightFooters(rightFooterMenuItem.isSelected()));
-
-        fileMenu.add(topHeaderMenuItem);
-        fileMenu.add(leftHeaderMenuItem);
-        fileMenu.add(bottomFooterMenuItem);
-        fileMenu.add(rightFooterMenuItem);
-
-
-        menuBar.add(fileMenu);
+        menuBar.setLayout(new BorderLayout());
+        menuBar.setPreferredSize(new Dimension(windowDimWidth, 25));
+        menuBar.add(fileMenu, BorderLayout.WEST);
         setJMenuBar(menuBar);
 
         menuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // создавать окно настройки таблицы
+                JFrame parentFrame = MainUi.this; // Ссылка на родительское окно
+                MyOptions optionsWindow = new MyOptions();
+                optionsWindow.setOptionsCallback(MainUi.this);
+                JDialog dialog = new JDialog(parentFrame, "Options", true);
+                dialog.setResizable(false);
+                dialog.getContentPane().add(optionsWindow);
+                dialog.pack();
+                dialog.setLocationRelativeTo(parentFrame);
+                dialog.setVisible(true);
             }
         });
 
-
-
-
-
-
 //------------------------------------------------------------------------
+
         JPanel tablePanel = new JPanel();
-        Object[][] data = {
-                {"Row 1", "John", 25, "Male"},
-                {"Row 2", "Alice", 30, "Female"},
-                {"Row 3", "Bob", 35, "Male"},
-                {"Row 4", "Lisa", 28, "Female"}
-        };
-        String[] columnNames = {"", "Name", "Age", "Gender"};
-        table = new MyTable(data, columnNames);
+        tablePanel.setPreferredSize(new Dimension(windowDimWidth, windowDimHeight));
 
-        // Настройка внешнего вида таблицы
-        table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        //tmp
+        JLabel tmpLable = new JLabel("Пусто");
+        tablePanel.add(tmpLable);
 
-        // Установка ширины столбца заголовков слева
-        table.getColumnModel().getColumn(0).setPreferredWidth(80);
 
-        // Добавление таблицы на панель
-        tablePanel.add(new JScrollPane(table));
 
-        mainPanel.add(tablePanel);*/
-//------------------------------------------------------------------------
-
-        // тут будет класс с окном настройки панели, который вернет DefaultTableModel
-        // который я отдам классу MyTable и он сформирует таблицу
-
+        mainPanel.add(tablePanel);
 
 //------------------------------------------------------------------------
 
         getContentPane().add(mainPanel);
-        //pack();
+        pack();
         setVisible(true);
     }
 
@@ -109,4 +81,13 @@ public class MainUi extends JFrame {
     public static void main(String[] args) {
         MainUi mu = new MainUi();
     }
+
+    @Override
+    public void onInsertButtonClicked(int rowData, int colData, int roundingData) {
+        // Выполните нужные действия с переданными данными
+        System.out.println("rowData: " + rowData);
+        System.out.println("colData: " + colData);
+        System.out.println("roundingData: " + roundingData);
+    }
+
 }
