@@ -4,62 +4,61 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class MyTable extends JTable {
-    private boolean showTopHeaders;
-    private boolean showLeftHeaders;
-    private boolean showBottomFooters;
-    private boolean showRightFooters;
 
-    public MyTable(Object[][] data, String[] columnNames) {
-        super(data, columnNames);
-        setDefaultRenderer(Object.class, new MyTableCellRenderer());
+    public MyTable(int rowData, int colData, int roundingData, boolean isTopHeader, boolean isLeftHeader,
+                   boolean isRightFooter, boolean isBottomFooter, boolean isRoundingCheck,
+                   String rightFooterData, String bottomFooterData) {
 
-        showTopHeaders = true;
-        showLeftHeaders = true;
-        showBottomFooters = true;
-        showRightFooters = true;
-    }
+     /*   // Обработка заголовков и итогов
+        if(isTopHeader){rowData++;}
+        if(isBottomFooter){rowData++;}
+        if(isLeftHeader){colData++;}
+        if(isRightFooter){colData++;}*/
 
-    public void setShowTopHeaders(boolean showTopHeaders) {
-        this.showTopHeaders = showTopHeaders;
-        repaint();
-    }
+        // Массив с данными
+        Object[][] data = new Object[rowData][colData];
 
-    public void setShowLeftHeaders(boolean showLeftHeaders) {
-        this.showLeftHeaders = showLeftHeaders;
-        repaint();
-    }
+        // Создание таблицы с моделью данных
+        DefaultTableModel model = new DefaultTableModel(data, 0);
+        this.setModel(model);
 
-    public void setShowBottomFooters(boolean showBottomFooters) {
-        this.showBottomFooters = showBottomFooters;
-        repaint();
-    }
-
-    public void setShowRightFooters(boolean showRightFooters) {
-        this.showRightFooters = showRightFooters;
-        repaint();
-    }
-
-    private class MyTableCellRenderer extends DefaultTableCellRenderer {
-        @Override
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
-                                                       boolean hasFocus, int row, int column) {
-            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-
-            if ((row == 0 && showTopHeaders) || (column == 0 && showLeftHeaders)) {
-                setBackground(Color.LIGHT_GRAY);
-                setHorizontalAlignment(SwingConstants.CENTER);
-            } else if ((row == table.getRowCount() - 1 && showBottomFooters) ||
-                    (column == table.getColumnCount() - 1 && showRightFooters)) {
-                setBackground(Color.LIGHT_GRAY);
-                setHorizontalAlignment(SwingConstants.RIGHT);
-            } else {
-                setBackground(table.getBackground());
-                setHorizontalAlignment(SwingConstants.LEFT);
+        if (isTopHeader) {
+            model.addRow(createHeaderArray(colData));
+        }
+        if (isLeftHeader) {
+            for (int i = 0; i < rowData; i++) {
+                model.addColumn("", createHeaderArray(rowData));
             }
-
-            return this;
+        }
+        if (isBottomFooter) {
+            model.addRow(createFooterArray(colData, bottomFooterData));
+        }
+        if (isRightFooter) {
+            for (int i = 0; i < rowData; i++) {
+                model.addColumn("", createFooterArray(rowData, rightFooterData));
+            }
         }
 
 
+
     }
+
+    // Создание массива заголовков или итогов
+    private Object[] createHeaderArray(int length) {
+        Object[] headerArray = new Object[length];
+        for (int i = 0; i < length; i++) {
+            headerArray[i] = "Header " + (i + 1);
+        }
+        return headerArray;
+    }
+
+    // Создание массива данных для итогов с заданным значением
+    private Object[] createFooterArray(int length, String footerData) {
+        Object[] footerArray = new Object[length];
+        for (int i = 0; i < length; i++) {
+            footerArray[i] = footerData;
+        }
+        return footerArray;
+    }
+
 }
