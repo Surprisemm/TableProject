@@ -1,3 +1,5 @@
+import org.w3c.dom.ls.LSOutput;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -83,11 +85,21 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
     }
 
     @Override
-    public void onInsertButtonClicked(int rowData, int colData, int roundingData) {
+    public void onInsertButtonClicked(int rowData, int colData, int roundingData, boolean isTopHeader, boolean isLeftHeader,
+                                      boolean isRightFooter, boolean isBottomFooter, boolean isRoundingCheck,
+                                      String rightFooterData, String bottomFooterData) {
         // Выполните нужные действия с переданными данными
         System.out.println("rowData: " + rowData);
         System.out.println("colData: " + colData);
         System.out.println("roundingData: " + roundingData);
+        System.out.println("isTopHeader: " + isTopHeader);
+        System.out.println("isLeftHeader: " + isLeftHeader);
+        System.out.println("isRightFooter: " + isRightFooter);
+        System.out.println("isBottomFooter: " + isBottomFooter);
+        System.out.println("isRoundingCheck: " + isRoundingCheck);
+        System.out.println("rightFooterData: " + rightFooterData);
+        System.out.println("bottomFooterData: " + bottomFooterData);
+        System.out.println("----------------------------------------");
     }
 
 }

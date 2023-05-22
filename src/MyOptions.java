@@ -1,6 +1,7 @@
 import com.sun.applet2.preloader.event.ConfigEvent;
 import net.miginfocom.swing.MigLayout;
 
+import javax.print.DocFlavor;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -89,7 +90,15 @@ public class MyOptions extends JPanel {
                 int rowData = (int) rowValue.getValue();
                 int colData = (int) colValue.getValue();
                 int roundingData = (int) roundingValue.getValue();
-                callback.onInsertButtonClicked(rowData, colData, roundingData);
+                boolean isTopHeader = topHeader.isSelected();
+                boolean isLeftHeader = leftHeader.isSelected();
+                boolean isRightFooter = rightFooter.isSelected();
+                boolean isBottomFooter = bottomFooter.isSelected();
+                boolean isRoundingCheck = roundingCheck.isSelected();
+                String rightFooterData = (String) rightFooterCombo.getSelectedItem();
+                String bottomFooterData = (String) bottomFooterCombo.getSelectedItem();
+                callback.onInsertButtonClicked(rowData, colData, roundingData, isTopHeader, isLeftHeader, isRightFooter,
+                        isBottomFooter, isRoundingCheck, rightFooterData, bottomFooterData);
                 closeWindow();
             }
         });
@@ -166,7 +175,9 @@ public class MyOptions extends JPanel {
     }
 
     public interface OptionsCallback {
-        void onInsertButtonClicked(int rowData, int colData, int roundingData);
+        void onInsertButtonClicked(int rowData, int colData, int roundingData, boolean isTopHeader, boolean isLeftHeader,
+                                   boolean isRightFooter, boolean isBottomFooter, boolean isRoundingCheck,
+                                   String rightFooterData, String bottomFooterData);
     }
 
     public void setOptionsCallback(OptionsCallback callback) {
@@ -180,8 +191,6 @@ public class MyOptions extends JPanel {
             dialog.dispose();
         }
     }
-
-
 
 
 }
