@@ -1,11 +1,13 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import java.awt.*;
 
 public class MyTable extends JTable {
 
-    private DefaultTableModel tableModel;
+    public Object[][] data;
+
 
     public MyTable(int rowData, int colData, int roundingData, boolean isTopHeader, boolean isLeftHeader,
                    boolean isRightFooter, boolean isBottomFooter, boolean isRoundingCheck,
@@ -19,22 +21,14 @@ public class MyTable extends JTable {
 
 
         // Создание таблицы с моделью данных
-        Object[][] data = new Object[rowData][colData];
+        data = new Object[rowData][colData];
 
+        MyTableModel tableModel = new MyTableModel(data);
 
-        // Заполняем заголовки и итоги
-        if (isTopHeader) {
-            for (int i = 0; i < colData; i++) {
-                String tmpStr = "Столбец " + (i + 1);
-                data[0][i] = tmpStr;
-            }
-        }
-
-
-
-        tableModel = new DefaultTableModel(data, null);
         setModel(tableModel);
+        setFillsViewportHeight(true);
     }
+
 
 
 }

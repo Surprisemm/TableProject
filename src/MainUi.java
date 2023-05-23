@@ -22,8 +22,10 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
 
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension dimension = tk.getScreenSize();
-        int windowDimWidth = tk.getScreenSize().width;
-        int windowDimHeight = tk.getScreenSize().height;
+      //  int windowDimWidth = tk.getScreenSize().width;
+        //int windowDimHeight = tk.getScreenSize().height;
+        int windowDimWidth = 800;
+        int windowDimHeight = 600;
 
         this.setBounds(dimension.width / 2 - windowDimWidth / 2, dimension.height / 2 - windowDimHeight / 2, windowDimWidth, windowDimHeight);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,19 +65,22 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
 
 //------------------------------------------------------------------------
 
-        tablePanel.setPreferredSize(dimension);
+        tablePanel.setPreferredSize(new Dimension(800,600));
 
-       /* myTable = new MyTable(5, 4, 2, true, true,
-                true, false, false, "Сумма", "Среднее");
-*/
+       // myTable = new MyTable(5, 4, 2, true, true,
+        //        true, false, false, "Сумма", "Среднее");
+
         // Внешний вид
-//        myTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+       // myTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+
 
         // Добавление таблицы на панель
 
         //tmp
        // JLabel tmpLable = new JLabel("Пусто");
-       // tablePanel.add(tmpLable);
+        //tablePanel.add(tmpLable);
+
+        // tablePanel.add(new JScrollPane(myTable));
 
         mainPanel.add(tablePanel);
 
@@ -95,6 +100,8 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
     public void onInsertButtonClicked(int rowData, int colData, int roundingData, boolean isTopHeader, boolean isLeftHeader,
                                       boolean isRightFooter, boolean isBottomFooter, boolean isRoundingCheck,
                                       String rightFooterData, String bottomFooterData) {
+        mainPanel.removeAll(); // очистить все
+
         // Выполните нужные действия с переданными данными
         System.out.println("rowData: " + rowData);
         System.out.println("colData: " + colData);
@@ -113,10 +120,16 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
         myTable = new MyTable(rowData, colData, roundingData, isTopHeader, isLeftHeader,
                 isRightFooter, isBottomFooter, isRoundingCheck, rightFooterData, bottomFooterData);
 
-        tablePanel.add(new JScrollPane(myTable));
 
-        revalidate();
-        repaint();
+        tablePanel.add(new JScrollPane(myTable));
+        mainPanel.add(tablePanel);
+
+        mainPanel.revalidate(); // Перерисовываем mainPanel
+        mainPanel.repaint();
+
+        getContentPane().add(mainPanel);
+        pack();
+        setVisible(true);
 
     }
 

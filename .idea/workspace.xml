@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="acfd2cd0-522f-4c5b-9311-c49538053e08" name="Changes" comment="Переделал MyTable">
+    <list default="true" id="acfd2cd0-522f-4c5b-9311-c49538053e08" name="Changes" comment="MyTable не работает">
+      <change afterPath="$PROJECT_DIR$/src/MyTableModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainUi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyTable.java" afterDir="false" />
@@ -10,6 +11,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -62,7 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684490232609</updated>
       <workItem from="1684490234179" duration="15327000" />
-      <workItem from="1684701081922" duration="14490000" />
+      <workItem from="1684701081922" duration="20748000" />
     </task>
     <task id="LOCAL-00001" summary="commit test">
       <created>1684490461798</created>
@@ -127,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684783887679</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="MyTable не работает">
+      <created>1684789291427</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1684789291427</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,6 +169,7 @@
     <MESSAGE value="MyOptions 100% внешнего вида добавил функционал кнопок Вставить и Отмена. (Нужно добавить передаваемы переменные после нажатия Вставить)" />
     <MESSAGE value="MyOptions 100% Вид и функционал" />
     <MESSAGE value="Переделал MyTable" />
-    <option name="LAST_COMMIT_MESSAGE" value="Переделал MyTable" />
+    <MESSAGE value="MyTable не работает" />
+    <option name="LAST_COMMIT_MESSAGE" value="MyTable не работает" />
   </component>
 </project>
