@@ -86,7 +86,7 @@ public class MyTable extends JTable {
                     data[0][i] = "Столбец " + n;
                     n++;
                 }
-                //tableModel.setRowEditable(0,false);
+                tableModel.setRowEditable(0,false);
         }
         if (isLeftHeader){
             int n = 1;
@@ -94,14 +94,18 @@ public class MyTable extends JTable {
                 data[i][0] = "Строка " + n;
                 n++;
             }
+            tableModel.setColumnEditable(0,false);
         }
         if(isBottomFooter){
             data[rowData - 1][0] = "";
-            //tableModel.setRowEditable(rowData - 1,false);
+            tableModel.setRowEditable(rowData - 1,false);
         }
         if(isRightFooter){
             data[0][colData - 1] = "";
+            tableModel.setColumnEditable(colData - 1,false);
         }
     }
+
+
 
 }
