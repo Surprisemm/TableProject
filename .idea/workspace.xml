@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="acfd2cd0-522f-4c5b-9311-c49538053e08" name="Changes" comment="MyTable создаются все столбцы и строки">
+    <list default="true" id="acfd2cd0-522f-4c5b-9311-c49538053e08" name="Changes" comment="MyTable создаются все столбцы и строки. коммит до добавления обновления ячеек">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyTableModel.java" afterDir="false" />
@@ -72,7 +72,7 @@
       <workItem from="1684490234179" duration="15327000" />
       <workItem from="1684701081922" duration="20748000" />
       <workItem from="1684913083974" duration="6001000" />
-      <workItem from="1684923299044" duration="2083000" />
+      <workItem from="1684923299044" duration="5961000" />
     </task>
     <task id="LOCAL-00001" summary="commit test">
       <created>1684490461798</created>
@@ -151,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684923517637</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="MyTable создаются все столбцы и строки. коммит до добавления обновления ячеек">
+      <created>1684930812754</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1684930812754</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +187,7 @@
     <MESSAGE value="Переделал MyTable" />
     <MESSAGE value="MyTable не работает" />
     <MESSAGE value="MyTable создаются все столбцы и строки" />
-    <option name="LAST_COMMIT_MESSAGE" value="MyTable создаются все столбцы и строки" />
+    <MESSAGE value="MyTable создаются все столбцы и строки. коммит до добавления обновления ячеек" />
+    <option name="LAST_COMMIT_MESSAGE" value="MyTable создаются все столбцы и строки. коммит до добавления обновления ячеек" />
   </component>
 </project>

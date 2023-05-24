@@ -1,5 +1,6 @@
 import javax.swing.table.AbstractTableModel;
 
+
 public class MyTableModel extends AbstractTableModel {
     private Object[][] data;
     private boolean[] rowEditable;
@@ -36,6 +37,12 @@ public class MyTableModel extends AbstractTableModel {
         return data[rowIndex][columnIndex];
     }
 
+    // Я не знаю как это работает, но без этой процедуры не сохраняются
+    // изменения в таблице.
+    public void setValueAt(Object value, int rowIndex, int columnIndex){
+        data[rowIndex][columnIndex] = value;
+    }
+
     @Override
     public boolean isCellEditable(int row, int column) {
         return rowEditable[row] && columnEditable[column];
@@ -52,4 +59,11 @@ public class MyTableModel extends AbstractTableModel {
             columnEditable[columnIndex] = editable;
         }
     }
+
+    public void setData(Object[][] newData){
+        data = newData;
+        fireTableDataChanged();
+    }
+
+
 }
