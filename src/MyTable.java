@@ -46,6 +46,9 @@ public class MyTable extends JTable {
         this.rightFooterData = rightFooterDat;
         this.bottomFooterData = bottomFooterDat;
 
+        tableEndRow = rowData;
+        tableEndCol = colData;
+
         // Обработка заголовков и итогов
         configureTable();
 
@@ -73,13 +76,15 @@ public class MyTable extends JTable {
                     cellEditor.addCellEditorListener(new CellEditorListener() {
                         @Override
                         public void editingStopped(ChangeEvent e) {
-                            for (int k = 0; k < rowData; k++) {
-                                for (int l = 0; l < colData; l++) {
+                            for (int k = 0; k < tableEndRow; k++) {
+                                for (int l = 0; l < tableEndCol; l++) {
                                     System.out.print(data[k][l] + " ");
                                 }
                                 System.out.println();
                             }
                             System.out.println("--------------");
+                            System.out.println(tableStartRow + " " + tableStartCol);
+                            System.out.println(tableEndRow + " " + tableEndCol);
                             //Обновление данных в таблице
                             setData(data);
                             //Обновление значений в итогах
@@ -105,7 +110,7 @@ public class MyTable extends JTable {
         }
         if (isBottomFooter) {
             rowData++;
-            tableEndRow = rowData - 2;
+            tableEndRow = rowData - 1;
         }
         if (isLeftHeader) {
             colData++;
@@ -113,7 +118,7 @@ public class MyTable extends JTable {
         }
         if (isRightFooter) {
             colData++;
-            tableEndCol = colData - 2;
+            tableEndCol = colData - 1;
         }
     }
 
