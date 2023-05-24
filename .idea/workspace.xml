@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="acfd2cd0-522f-4c5b-9311-c49538053e08" name="Changes" comment="MyTable создаются все столбцы и строки. обновления ячеек есть. коммит перед добавлением подсчетов в итогах. Все ОК. Добавить подсчет итогов">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="acfd2cd0-522f-4c5b-9311-c49538053e08" name="Changes" comment="MyTable создаются все столбцы и строки. обновления ячеек есть. коммит перед добавлением подсчетов в итогах. Все ОК. Добавить подсчет итогов ~">
+      <change beforePath="$PROJECT_DIR$/src/MainUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainUi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyOptions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyTable_v1.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,17 +32,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Documents/repo/libs/miglayout15-swing.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/User/Documents/repo/libs/miglayout15-swing.jar",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\Documents\repo\TableProject\src" />
@@ -171,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684941312145</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="MyTable создаются все столбцы и строки. обновления ячеек есть. коммит перед добавлением подсчетов в итогах. Все ОК. Добавить подсчет итогов ~">
+      <created>1684941959486</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1684941959486</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,6 +212,7 @@
     <MESSAGE value="MyTable создаются все столбцы и строки. коммит до добавления обновления ячеек" />
     <MESSAGE value="MyTable создаются все столбцы и строки. обновления ячеек есть. коммит перед добавлением подсчетов в итогах" />
     <MESSAGE value="MyTable создаются все столбцы и строки. обновления ячеек есть. коммит перед добавлением подсчетов в итогах. Все ОК. Добавить подсчет итогов" />
-    <option name="LAST_COMMIT_MESSAGE" value="MyTable создаются все столбцы и строки. обновления ячеек есть. коммит перед добавлением подсчетов в итогах. Все ОК. Добавить подсчет итогов" />
+    <MESSAGE value="MyTable создаются все столбцы и строки. обновления ячеек есть. коммит перед добавлением подсчетов в итогах. Все ОК. Добавить подсчет итогов ~" />
+    <option name="LAST_COMMIT_MESSAGE" value="MyTable создаются все столбцы и строки. обновления ячеек есть. коммит перед добавлением подсчетов в итогах. Все ОК. Добавить подсчет итогов ~" />
   </component>
 </project>

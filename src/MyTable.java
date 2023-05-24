@@ -93,7 +93,7 @@ public class MyTable extends JTable {
 
                         @Override
                         public void editingCanceled(ChangeEvent e) {
-                            // Не используется
+
                         }
                     });
                 }

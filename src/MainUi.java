@@ -102,7 +102,6 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
                                       String rightFooterData, String bottomFooterData) {
         mainPanel.removeAll(); // очистить все
 
-        // Выполните нужные действия с переданными данными
         System.out.println("rowData: " + rowData);
         System.out.println("colData: " + colData);
         System.out.println("roundingData: " + roundingData);

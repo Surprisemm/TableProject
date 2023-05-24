@@ -106,7 +106,6 @@ public class MyOptions extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Закрыть родительское окно (JDialog)
                 closeWindow();
             }
         });
