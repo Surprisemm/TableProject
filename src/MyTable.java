@@ -31,20 +31,20 @@ public class MyTable extends JTable {
     private String bottomFooterData;
     private MyTableModel tableModel;
 
-    public MyTable(int rowData, int colData, int roundingData, boolean isTopHeader, boolean isLeftHeader,
-                   boolean isRightFooter, boolean isBottomFooter, boolean isRoundingCheck,
-                   String rightFooterData, String bottomFooterData) {
+    public MyTable(int rowDat, int colDat, int roundingDat, boolean isTopHeade, boolean isLeftHeade,
+                   boolean isRightFoote, boolean isBottomFoote, boolean isRoundingChec,
+                   String rightFooterDat, String bottomFooterDat) {
 
-        this.rowData = rowData;
-        this.colData = colData;
-        this.roundingData = roundingData;
-        this.isTopHeader = isTopHeader;
-        this.isLeftHeader = isLeftHeader;
-        this.isRightFooter = isRightFooter;
-        this.isBottomFooter = isBottomFooter;
-        this.isRoundingCheck = isRoundingCheck;
-        this.rightFooterData = rightFooterData;
-        this.bottomFooterData = bottomFooterData;
+        this.rowData = rowDat;
+        this.colData = colDat;
+        this.roundingData = roundingDat;
+        this.isTopHeader = isTopHeade;
+        this.isLeftHeader = isLeftHeade;
+        this.isRightFooter = isRightFoote;
+        this.isBottomFooter = isBottomFoote;
+        this.isRoundingCheck = isRoundingChec;
+        this.rightFooterData = rightFooterDat;
+        this.bottomFooterData = bottomFooterDat;
 
         // Обработка заголовков и итогов
         configureTable();

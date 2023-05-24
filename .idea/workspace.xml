@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="acfd2cd0-522f-4c5b-9311-c49538053e08" name="Changes" comment="MyTable создаются все столбцы и строки. обновления ячеек есть. коммит перед добавлением подсчетов в итогах">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="acfd2cd0-522f-4c5b-9311-c49538053e08" name="Changes" comment="MyTable создаются все столбцы и строки. обновления ячеек есть. коммит перед добавлением подсчетов в итогах. буду менять названия переменных 2">
       <change beforePath="$PROJECT_DIR$/src/MyTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyTable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
