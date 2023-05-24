@@ -66,15 +66,24 @@ public class MyTable extends JTable {
         setFillsViewportHeight(true);
 
         //Слушатель обновления ячеек таблицы
-        for (int i = 0; i < rowData; i++) {
-            for (int j = 0; j < colData; j++) {
+        for (int i = 0; i < this.rowData; i++) {
+            for (int j = 0; j < this.colData; j++) {
                 TableCellEditor cellEditor = getCellEditor(i, j);
                 if (cellEditor != null) {
                     cellEditor.addCellEditorListener(new CellEditorListener() {
                         @Override
                         public void editingStopped(ChangeEvent e) {
+                            for (int k = 0; k < rowData; k++) {
+                                for (int l = 0; l < colData; l++) {
+                                    System.out.print(data[k][l] + " ");
+                                }
+                                System.out.println();
+                            }
+                            System.out.println("--------------");
                             //Обновление данных в таблице
                             setData(data);
+                            //Обновление значений в итогах
+
                         }
 
                         @Override
