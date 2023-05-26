@@ -68,38 +68,6 @@ public class MyTable extends JTable {
         setModel(tableModel);
         setFillsViewportHeight(true);
 
-        //Слушатель обновления ячеек таблицы
-        for (int i = 0; i < this.rowData; i++) {
-            for (int j = 0; j < this.colData; j++) {
-                TableCellEditor cellEditor = getCellEditor(i, j);
-                if (cellEditor != null) {
-                    cellEditor.addCellEditorListener(new CellEditorListener() {
-                        @Override
-                        public void editingStopped(ChangeEvent e) {
-                            for (int k = 0; k < tableEndRow; k++) {
-                                for (int l = 0; l < tableEndCol; l++) {
-                                    System.out.print(data[k][l] + " ");
-                                }
-                                System.out.println();
-                            }
-                            System.out.println("--------------");
-                            System.out.println(tableStartRow + " " + tableStartCol);
-                            System.out.println(tableEndRow + " " + tableEndCol);
-                            //Обновление данных в таблице
-                            setData(data);
-                            //Обновление значений в итогах
-
-                        }
-
-                        @Override
-                        public void editingCanceled(ChangeEvent e) {
-
-                        }
-                    });
-                }
-            }
-        }
-
 
     }
 
@@ -124,13 +92,12 @@ public class MyTable extends JTable {
 
     private void updateHeaderText(){
         if (isTopHeader){
-
-                int n = 1;
-                for (int i = tableStartCol; i < colData; i++) {
-                    data[0][i] = "Столбец " + n;
-                    n++;
-                }
-                tableModel.setRowEditable(0,false);
+            int n = 1;
+            for (int i = tableStartCol; i < colData; i++) {
+                data[0][i] = "Столбец " + n;
+                n++;
+            }
+            tableModel.setRowEditable(0,false);
         }
         if (isLeftHeader){
             int n = 1;
@@ -150,18 +117,6 @@ public class MyTable extends JTable {
         }
     }
 
-    public void setData(Object[][] newData){
-        data = newData;
-        tableModel.setData(newData);
-        refreshTable();
-    }
-
-    public void refreshTable() {
-        TableModel model = getModel();
-        if(model instanceof DefaultTableModel){
-            ((DefaultTableModel) model).fireTableDataChanged();
-        }
-    }
 
 
 

@@ -67,20 +67,7 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
 
         tablePanel.setPreferredSize(new Dimension(800,600));
 
-       // myTable = new MyTable(5, 4, 2, true, true,
-        //        true, false, false, "Сумма", "Среднее");
 
-        // Внешний вид
-       // myTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-
-
-        // Добавление таблицы на панель
-
-        //tmp
-       // JLabel tmpLable = new JLabel("Пусто");
-        //tablePanel.add(tmpLable);
-
-        // tablePanel.add(new JScrollPane(myTable));
 
         mainPanel.add(tablePanel);
 
@@ -118,6 +105,8 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
 
         myTable = new MyTable(rowData, colData, roundingData, isTopHeader, isLeftHeader,
                 isRightFooter, isBottomFooter, isRoundingCheck, rightFooterData, bottomFooterData);
+
+
 
 
         tablePanel.add(new JScrollPane(myTable));

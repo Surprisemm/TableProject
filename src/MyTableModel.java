@@ -40,7 +40,18 @@ public class MyTableModel extends AbstractTableModel {
     // Я не знаю как это работает, но без этой процедуры не сохраняются
     // изменения в таблице.
     public void setValueAt(Object value, int rowIndex, int columnIndex){
+
         data[rowIndex][columnIndex] = value;
+
+        for (int i = 0; i < getRowCount(); i++) {
+            for (int j = 0; j < getColumnCount(); j++) {
+                System.out.print(data[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("------------------");
+        System.out.println(value + " " + rowIndex + " " + columnIndex);
+        System.out.println("------------------");
     }
 
     @Override
@@ -60,10 +71,6 @@ public class MyTableModel extends AbstractTableModel {
         }
     }
 
-    public void setData(Object[][] newData){
-        data = newData;
-        fireTableDataChanged();
-    }
 
 
 }
