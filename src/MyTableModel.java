@@ -6,8 +6,45 @@ public class MyTableModel extends AbstractTableModel {
     private boolean[] rowEditable;
     private boolean[] columnEditable;
 
-    public MyTableModel(Object[][] data) {
-        this.data = data;
+    private int rowData;
+    private int colData;
+    private int roundingData;
+    private boolean isTopHeader;
+    private boolean isLeftHeader;
+    private boolean isRightFooter;
+    private boolean isBottomFooter;
+    private boolean isRoundingCheck;
+    private String rightFooterData;
+    private String bottomFooterData;
+
+    private int tableStartCol = 0;
+    private int tableStartRow = 0;
+    private int tableEndCol;
+    private int tableEndRow;
+
+    public MyTableModel(int rd, int cd, int rod, boolean ith, boolean ilh,
+                        boolean irf, boolean ibf, boolean irc,
+                        String rfd, String bfd) {
+
+        rowData = rd;
+        colData = cd;
+        roundingData = rod;
+        isTopHeader = ith;
+        isLeftHeader = ilh;
+        isRightFooter = irf;
+        isBottomFooter = ibf;
+        isRoundingCheck = irc;
+        rightFooterData = rfd;
+        bottomFooterData = bfd;
+
+        //Изменение размеров таблицы с учетом чекбоксов
+        configureTable();
+
+        data =  new Object[rowData][colData];
+
+        tableEndRow = rowData;
+        tableEndCol = colData;
+
         rowEditable = new boolean[getRowCount()];
         columnEditable = new boolean[getColumnCount()];
         // По умолчанию все строки и столбцы редактируемые
@@ -37,11 +74,14 @@ public class MyTableModel extends AbstractTableModel {
         return data[rowIndex][columnIndex];
     }
 
-    // Я не знаю как это работает, но без этой процедуры не сохраняются
-    // изменения в таблице.
     public void setValueAt(Object value, int rowIndex, int columnIndex){
 
         data[rowIndex][columnIndex] = value;
+
+        //Тут обновляю значение в футере
+
+
+
 
         for (int i = 0; i < getRowCount(); i++) {
             for (int j = 0; j < getColumnCount(); j++) {
@@ -68,6 +108,52 @@ public class MyTableModel extends AbstractTableModel {
     public void setColumnEditable(int columnIndex, boolean editable) {
         if (columnIndex >= 0 && columnIndex < columnEditable.length) {
             columnEditable[columnIndex] = editable;
+        }
+    }
+
+    public void configureTable() {
+        if (isTopHeader) {
+            rowData++;
+            tableStartRow = 1;
+        }
+        if (isBottomFooter) {
+            rowData++;
+            tableEndRow = rowData - 1;
+        }
+        if (isLeftHeader) {
+            colData++;
+            tableStartCol = 1;
+        }
+        if (isRightFooter) {
+            colData++;
+            tableEndCol = colData - 1;
+        }
+    }
+
+    public void updateHeaderText(){
+        if (isTopHeader){
+            int n = 1;
+            for (int i = tableStartCol; i < colData; i++) {
+                data[0][i] = "Столбец " + n;
+                n++;
+            }
+            setRowEditable(0,false);
+        }
+        if (isLeftHeader){
+            int n = 1;
+            for (int i = tableStartRow; i < rowData ; i++) {
+                data[i][0] = "Строка " + n;
+                n++;
+            }
+            setColumnEditable(0,false);
+        }
+        if(isBottomFooter){
+            data[rowData - 1][0] = "";
+            setRowEditable(rowData - 1,false);
+        }
+        if(isRightFooter){
+            data[0][colData - 1] = "";
+            setColumnEditable(colData - 1,false);
         }
     }
 

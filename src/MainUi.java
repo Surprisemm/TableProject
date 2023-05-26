@@ -2,6 +2,7 @@ import org.w3c.dom.ls.LSOutput;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,8 +13,7 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
     private MyOptions optionsWindow = new MyOptions();
     private JPanel mainPanel = new JPanel();
     private JPanel tablePanel = new JPanel();
-
-
+    private MyTableModel tableModel;
 
 
     public MainUi(){
@@ -103,10 +103,9 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
 
         // Заполняю tablePanel
 
-        myTable = new MyTable(rowData, colData, roundingData, isTopHeader, isLeftHeader,
+        tableModel = new MyTableModel(rowData, colData, roundingData, isTopHeader, isLeftHeader,
                 isRightFooter, isBottomFooter, isRoundingCheck, rightFooterData, bottomFooterData);
-
-
+        myTable = new MyTable(tableModel);
 
 
         tablePanel.add(new JScrollPane(myTable));

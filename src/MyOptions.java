@@ -16,8 +16,8 @@ public class MyOptions extends JPanel {
     public MyOptions() {
         super();
 
-        setLayout(new MigLayout("nogrid, gap 20"));
-        Font font = new Font("Comic Sans MS", Font.PLAIN, 18);
+        setLayout(new MigLayout("insets 8 8 4 8, wrap 4, fill", "[pref!][230!]0[pref!][fill]", ""));
+        Font font = new Font("Tahoma", Font.PLAIN, 18);
         setPreferredSize(new Dimension(640, 340));
 
 
@@ -145,29 +145,33 @@ public class MyOptions extends JPanel {
 
         // 1 строка
         add(rowLable);
-        add(rowValue, "gap 10");
-        add(colLable, "gap 10");
-        add(colValue, "gap 10");
+        add(rowValue);
+        add(colLable);
+        add(colValue,"growx");
 
         // 2 строка
-        add(topHeader, "newline");
-        add(leftHeader, "gap 10");
+        add(topHeader, "span 2");
+        add(leftHeader, "span 2");
 
         // 3 str
-        add(bottomFooter, "newline");
-        add(bottomFooterCombo, "gap 10");
+        add(bottomFooter, "span 2");
+        add(bottomFooterCombo, "span 2, growx");
 
         // 4 str
-        add(rightFooter, "newline");
-        add(rightFooterCombo, "gap 10");
+        add(rightFooter, "span 2");
+        add(rightFooterCombo, "span 2, growx");
 
         // 5 str
-        add(roundingCheck, "newline");
-        add(roundingValue, "gap 10");
-        add(roundingText, "gap 10");
+        JPanel roundingPanel = new JPanel(new MigLayout("insets 0 0 0 0, wrap 3", "[pref!][60][pref!]", ""));
+        roundingPanel.add(roundingCheck);
+        roundingPanel.add(roundingValue);
+        roundingPanel.add(roundingText);
+        add(roundingPanel, "span, growx");
+
+        add(new JSeparator(), "span, growx");
 
         // 6 str
-        add(buttonsPanel, "newline, span, alignx right");
+        add(buttonsPanel, "span, alignx right");
 
         setVisible(true);
 

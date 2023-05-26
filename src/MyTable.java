@@ -13,109 +13,21 @@ import static com.sun.java.accessibility.util.SwingEventMonitor.addCellEditorLis
 
 public class MyTable extends JTable {
 
-    public Object[][] data;
-    private int tableStartCol = 0;
-    private int tableStartRow = 0;
-    private int tableEndCol;
-    private int tableEndRow;
-
-    private int rowData;
-    private int colData;
-    private int roundingData;
-    private boolean isTopHeader;
-    private boolean isBottomFooter;
-    private boolean isLeftHeader;
-    private boolean isRightFooter;
-    private boolean isRoundingCheck;
-    private String rightFooterData;
-    private String bottomFooterData;
-    private MyTableModel tableModel;
-
-    public MyTable(int rowDat, int colDat, int roundingDat, boolean isTopHeade, boolean isLeftHeade,
-                   boolean isRightFoote, boolean isBottomFoote, boolean isRoundingChec,
-                   String rightFooterDat, String bottomFooterDat) {
-
-        this.rowData = rowDat;
-        this.colData = colDat;
-        this.roundingData = roundingDat;
-        this.isTopHeader = isTopHeade;
-        this.isLeftHeader = isLeftHeade;
-        this.isRightFooter = isRightFoote;
-        this.isBottomFooter = isBottomFoote;
-        this.isRoundingCheck = isRoundingChec;
-        this.rightFooterData = rightFooterDat;
-        this.bottomFooterData = bottomFooterDat;
-
-        tableEndRow = rowData;
-        tableEndCol = colData;
-
-        // Обработка заголовков и итогов
-        configureTable();
-
-        // Создание таблицы с моделью данных
-        data = new Object[this.rowData][this.colData];
-
-        //Добавление своей модели
-        tableModel = new MyTableModel(data);
-
-        //Обновление текста в заголовках
-        updateHeaderText();
+    public MyTable(MyTableModel tableModel) {
 
         //Удаление стандартных заголовков
         setTableHeader(null);
+
+        //Обновление текста в заголовках
+        tableModel.updateHeaderText();
 
         //Установка модели для таблицы
         setModel(tableModel);
         setFillsViewportHeight(true);
 
-
     }
 
-    private void configureTable() {
-        if (isTopHeader) {
-            rowData++;
-            tableStartRow = 1;
-        }
-        if (isBottomFooter) {
-            rowData++;
-            tableEndRow = rowData - 1;
-        }
-        if (isLeftHeader) {
-            colData++;
-            tableStartCol = 1;
-        }
-        if (isRightFooter) {
-            colData++;
-            tableEndCol = colData - 1;
-        }
-    }
 
-    private void updateHeaderText(){
-        if (isTopHeader){
-            int n = 1;
-            for (int i = tableStartCol; i < colData; i++) {
-                data[0][i] = "Столбец " + n;
-                n++;
-            }
-            tableModel.setRowEditable(0,false);
-        }
-        if (isLeftHeader){
-            int n = 1;
-            for (int i = tableStartRow; i < rowData ; i++) {
-                data[i][0] = "Строка " + n;
-                n++;
-            }
-            tableModel.setColumnEditable(0,false);
-        }
-        if(isBottomFooter){
-            data[rowData - 1][0] = "";
-            tableModel.setRowEditable(rowData - 1,false);
-        }
-        if(isRightFooter){
-            data[0][colData - 1] = "";
-            tableModel.setColumnEditable(colData - 1,false);
-        }
-    }
 
 
 

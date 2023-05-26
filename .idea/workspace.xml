@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="acfd2cd0-522f-4c5b-9311-c49538053e08" name="Changes" comment="MyTable создаются все столбцы и строки. обновления ячеек есть. коммит перед добавлением подсчетов в итогах. Все ОК. Добавить подсчет итогов ~~">
+    <list default="true" id="acfd2cd0-522f-4c5b-9311-c49538053e08" name="Changes" comment="MyTable создаются все столбцы и строки. обновления ячеек есть. Коммит перед переделкой конструктора">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainUi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyOptions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyTableModel.java" afterDir="false" />
     </list>
@@ -74,7 +75,7 @@
       <workItem from="1684701081922" duration="20748000" />
       <workItem from="1684913083974" duration="6001000" />
       <workItem from="1684923299044" duration="7050000" />
-      <workItem from="1685088939486" duration="2361000" />
+      <workItem from="1685088939486" duration="9259000" />
     </task>
     <task id="LOCAL-00001" summary="commit test">
       <created>1684490461798</created>
@@ -188,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684967544570</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="MyTable создаются все столбцы и строки. обновления ячеек есть. Коммит перед переделкой конструктора">
+      <created>1685101522539</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1685101522539</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,6 +230,7 @@
     <MESSAGE value="MyTable создаются все столбцы и строки. обновления ячеек есть. коммит перед добавлением подсчетов в итогах. Все ОК. Добавить подсчет итогов" />
     <MESSAGE value="MyTable создаются все столбцы и строки. обновления ячеек есть. коммит перед добавлением подсчетов в итогах. Все ОК. Добавить подсчет итогов ~" />
     <MESSAGE value="MyTable создаются все столбцы и строки. обновления ячеек есть. коммит перед добавлением подсчетов в итогах. Все ОК. Добавить подсчет итогов ~~" />
-    <option name="LAST_COMMIT_MESSAGE" value="MyTable создаются все столбцы и строки. обновления ячеек есть. коммит перед добавлением подсчетов в итогах. Все ОК. Добавить подсчет итогов ~~" />
+    <MESSAGE value="MyTable создаются все столбцы и строки. обновления ячеек есть. Коммит перед переделкой конструктора" />
+    <option name="LAST_COMMIT_MESSAGE" value="MyTable создаются все столбцы и строки. обновления ячеек есть. Коммит перед переделкой конструктора" />
   </component>
 </project>
