@@ -21,6 +21,10 @@ public class MyTableModel extends AbstractTableModel {
     private int tableStartRow = 0;
     private int tableEndCol;
     private int tableEndRow;
+    private Aggregator rowAggregator;
+    private Aggregator colAggregator;
+    private double[] rowResult;
+    private double[] colResult;
 
     public MyTableModel(int rd, int cd, int rod, boolean ith, boolean ilh,
                         boolean irf, boolean ibf, boolean irc,
@@ -37,10 +41,22 @@ public class MyTableModel extends AbstractTableModel {
         rightFooterData = rfd;
         bottomFooterData = bfd;
 
+        rowAggregator = invokeAgg(rightFooterData);
+        colAggregator = invokeAgg(bottomFooterData);
+
+        rowResult = new double[rowData];
+        colResult = new double[colData];
+
         //Изменение размеров таблицы с учетом чекбоксов
         configureTable();
 
         data =  new Object[rowData][colData];
+
+       /* for (int i = tableStartRow; i < tableEndRow; i++) {
+            for (int j = tableStartCol; j < tableEndCol; j++) {
+                data[i][j] = "Nikita " + i + " " + j;
+            }
+        }*/
 
         tableEndRow = rowData;
         tableEndCol = colData;
@@ -80,10 +96,30 @@ public class MyTableModel extends AbstractTableModel {
 
         //Тут обновляю значение в футере
 
+        //Прохожу по всем ячейкам нижнего футера
+       /* for (int i = tableStartCol; i < tableEndCol ; i++) {
+            data[tableEndRow][i] =
+        }
+
+        for (int i = tableStartRow; i < tableEndRow; i++) {
+            data[i][tableEndCol] =
+        }*/
+
+        if(isBottomFooter) {
+
+            setColValInAgg(3);
+            System.out.println("res = " + colAggregator.getResult());
+
+            for (int i = 0; i < rowResult.length; i++) {
+                setColValInAgg(i);
+                rowResult[i] = colAggregator.getResult();
+            }
+
+        }
 
 
 
-        for (int i = 0; i < getRowCount(); i++) {
+      /*  for (int i = 0; i < getRowCount(); i++) {
             for (int j = 0; j < getColumnCount(); j++) {
                 System.out.print(data[i][j] + " ");
             }
@@ -91,7 +127,7 @@ public class MyTableModel extends AbstractTableModel {
         }
         System.out.println("------------------");
         System.out.println(value + " " + rowIndex + " " + columnIndex);
-        System.out.println("------------------");
+        System.out.println("------------------");*/
     }
 
     @Override
@@ -157,6 +193,36 @@ public class MyTableModel extends AbstractTableModel {
         }
     }
 
+    private Aggregator invokeAgg(String agg) {
 
+        switch (agg) {
+            case "Сумма":
+                return new SumAgg();
+            case "Количество":
+                return new CounterAgg();
+            case "Среднее":
+                return new AverageAgg();
+            case "Максимум":
+                return new MaxAgg();
+            case "Минимум":
+                return new MinAgg();
+            case "Сумма квадратов":
+                return new SqdSumAgg();
+        }
+
+        return null;
+    }
+
+    private void setColValInAgg(int columnIndex) {
+        colAggregator.reset();
+
+        for (int rowIndex = tableStartRow; rowIndex < tableEndRow; rowIndex++) {
+            Object[] row = data[rowIndex];
+            if (columnIndex < row.length && row[columnIndex] != null) {
+                System.out.println(row[columnIndex]);
+                colAggregator.addValue(row[columnIndex]);
+            }
+        }
+    }
 
 }
