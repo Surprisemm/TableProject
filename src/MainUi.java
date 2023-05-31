@@ -1,6 +1,7 @@
 import org.w3c.dom.ls.LSOutput;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.awt.*;
@@ -11,9 +12,10 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
 
     private MyTable myTable;
     private MyOptions optionsWindow = new MyOptions();
+    private JPanel tablePanel;
     private JPanel mainPanel = new JPanel();
-    private JPanel tablePanel = new JPanel();
     private MyTableModel tableModel;
+    private GridBagConstraints gbc;
 
 
     public MainUi(){
@@ -22,19 +24,11 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
 
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension dimension = tk.getScreenSize();
-      //  int windowDimWidth = tk.getScreenSize().width;
-        //int windowDimHeight = tk.getScreenSize().height;
-        int windowDimWidth = 800;
-        int windowDimHeight = 600;
+        int windowDimWidth = tk.getScreenSize().width;
+        int windowDimHeight = tk.getScreenSize().height;
 
         this.setBounds(dimension.width / 2 - windowDimWidth / 2, dimension.height / 2 - windowDimHeight / 2, windowDimWidth, windowDimHeight);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-
-
-
-    //    System.out.println(optionsWindow.getRowValue());
 
 //-----------------------------------------------------------------------
 
@@ -65,15 +59,24 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
 
 //------------------------------------------------------------------------
 
-        tablePanel.setPreferredSize(new Dimension(300,600));
+        tablePanel = new JPanel(new GridBagLayout());
 
+        int tablePadding = 10;
+        tablePanel.setBorder(new EmptyBorder(tablePadding, tablePadding, tablePadding, tablePadding));
 
+        gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
 
-        mainPanel.add(tablePanel);
 
 //------------------------------------------------------------------------
 
-        getContentPane().add(tablePanel);
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        mainPanel.add(tablePanel);
+        mainPanel.setPreferredSize(dimension);
+
+        getContentPane().add(mainPanel);
         pack();
         setVisible(true);
     }
@@ -87,7 +90,7 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
     public void onInsertButtonClicked(int rowData, int colData, int roundingData, boolean isTopHeader, boolean isLeftHeader,
                                       boolean isRightFooter, boolean isBottomFooter, boolean isRoundingCheck,
                                       String rightFooterData, String bottomFooterData) {
-        mainPanel.removeAll(); // очистить все
+        tablePanel.removeAll();
 
         // Заполняю tablePanel
 
@@ -96,15 +99,10 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
         myTable = new MyTable(tableModel);
 
 
-        tablePanel.add(new JScrollPane(myTable));
-        mainPanel.add(tablePanel);
+        tablePanel.add(new JScrollPane(myTable), gbc);
 
-        mainPanel.revalidate(); // Перерисовываем mainPanel
-        mainPanel.repaint();
-
-        getContentPane().add(tablePanel);
-        pack();
-        setVisible(true);
+        tablePanel.revalidate(); // Перерисовываем mainPanel
+        tablePanel.repaint();
 
     }
 

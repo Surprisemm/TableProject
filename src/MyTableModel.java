@@ -8,12 +8,12 @@ public class MyTableModel extends AbstractTableModel {
 
     private int rowData;
     private int colData;
-    private int roundingData;
+    public int roundingData;
     private boolean isTopHeader;
     private boolean isLeftHeader;
     private boolean isRightFooter;
     private boolean isBottomFooter;
-    private boolean isRoundingCheck;
+    public boolean isRoundingCheck;
     private String rightFooterData;
     private String bottomFooterData;
 
