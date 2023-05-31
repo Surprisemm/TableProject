@@ -65,7 +65,7 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
 
 //------------------------------------------------------------------------
 
-        tablePanel.setPreferredSize(new Dimension(800,600));
+        tablePanel.setPreferredSize(new Dimension(300,600));
 
 
 
@@ -73,7 +73,7 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
 
 //------------------------------------------------------------------------
 
-        getContentPane().add(mainPanel);
+        getContentPane().add(tablePanel);
         pack();
         setVisible(true);
     }
@@ -89,18 +89,6 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
                                       String rightFooterData, String bottomFooterData) {
         mainPanel.removeAll(); // очистить все
 
-        System.out.println("rowData: " + rowData);
-        System.out.println("colData: " + colData);
-        System.out.println("roundingData: " + roundingData);
-        System.out.println("isTopHeader: " + isTopHeader);
-        System.out.println("isLeftHeader: " + isLeftHeader);
-        System.out.println("isRightFooter: " + isRightFooter);
-        System.out.println("isBottomFooter: " + isBottomFooter);
-        System.out.println("isRoundingCheck: " + isRoundingCheck);
-        System.out.println("rightFooterData: " + rightFooterData);
-        System.out.println("bottomFooterData: " + bottomFooterData);
-        System.out.println("----------------------------------------");
-
         // Заполняю tablePanel
 
         tableModel = new MyTableModel(rowData, colData, roundingData, isTopHeader, isLeftHeader,
@@ -114,7 +102,7 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
         mainPanel.revalidate(); // Перерисовываем mainPanel
         mainPanel.repaint();
 
-        getContentPane().add(mainPanel);
+        getContentPane().add(tablePanel);
         pack();
         setVisible(true);
 

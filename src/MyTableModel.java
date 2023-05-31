@@ -205,7 +205,6 @@ public class MyTableModel extends AbstractTableModel {
 
         for (int rowIndex = 0; rowIndex < rowData; rowIndex++) {
             Object[] row = data[rowIndex];
-            System.out.println(" row val = " + row);
             if (columnIndex < row.length && row[columnIndex] != null) {
                 colAggregator.addValue(row[columnIndex]);
             }
@@ -228,17 +227,6 @@ public class MyTableModel extends AbstractTableModel {
 
         return rowAggregator.getResult();
 
-    }
-
-    private double setValInAgg(int start, int end, int index, Aggregator aggregator) {
-        aggregator.reset();
-        for (int i = start; i < end; i++) {
-            Object[] items = data[i];
-            if (index < items.length && items[index] != null) {
-                aggregator.addValue(items[index]);
-            }
-        }
-        return aggregator.getResult();
     }
 
     private void updateFooters(){
@@ -264,6 +252,8 @@ public class MyTableModel extends AbstractTableModel {
             }
 
         }
+
+        data[tableEndRow - 1][tableEndCol - 1] = " ";
 
     }
 
