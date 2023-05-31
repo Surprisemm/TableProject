@@ -56,8 +56,8 @@ public class MyTableModel extends AbstractTableModel {
 
         data =  new Object[rowData][colData];
 
-        rowResult = new double[rowData];
-        colResult = new double[colData];
+        rowResult = new double[rowData+1];
+        colResult = new double[colData+1];
 
        /* for (int i = tableStartRow; i < tableEndRow; i++) {
             for (int j = tableStartCol; j < tableEndCol; j++) {
@@ -101,39 +101,7 @@ public class MyTableModel extends AbstractTableModel {
 
         data[rowIndex][columnIndex] = value;
 
-        //Тут обновляю значение в футере
-
-        //Прохожу по всем ячейкам нижнего футера
-       /* for (int i = tableStartCol; i < tableEndCol ; i++) {
-            data[tableEndRow][i] =
-        }
-
-        for (int i = tableStartRow; i < tableEndRow; i++) {
-            data[i][tableEndCol] =
-        }*/
-
-        if(isBottomFooter) {
-
-            for (int i = 0; i < rowResult.length; i++) {
-                rowResult[i] = setColValInAgg(i);
-            }
-            for (int i = tableStartCol; i < tableEndCol; i++) {
-                data[tableEndRow - 1][i] = rowResult[i];
-            }
-
-        }
-
-        if(isRightFooter){
-
-            for (int i = 0; i < colResult.length; i++) {
-                colResult[i] = setRowValInAgg(i);
-            }
-            for (int i = tableStartRow; i < tableEndRow-1; i++) {
-                data[i][tableEndCol - 1] = colResult[i];
-            }
-
-        }
-
+        updateFooters();
 
         fireTableDataChanged();
 
@@ -235,8 +203,9 @@ public class MyTableModel extends AbstractTableModel {
 
         colAggregator.reset();
 
-        for (int rowIndex = tableStartRow; rowIndex < tableEndRow; rowIndex++) {
+        for (int rowIndex = 0; rowIndex < rowData; rowIndex++) {
             Object[] row = data[rowIndex];
+            System.out.println(" row val = " + row);
             if (columnIndex < row.length && row[columnIndex] != null) {
                 colAggregator.addValue(row[columnIndex]);
             }
@@ -250,7 +219,7 @@ public class MyTableModel extends AbstractTableModel {
 
         rowAggregator.reset();
 
-        for (int colIndex = tableStartCol; colIndex < tableEndCol; colIndex++) {
+        for (int colIndex = 0; colIndex < colData; colIndex++) {
             Object col = data[rowIndex][colIndex];
             if(col != null) {
                 rowAggregator.addValue(col);
@@ -272,5 +241,30 @@ public class MyTableModel extends AbstractTableModel {
         return aggregator.getResult();
     }
 
+    private void updateFooters(){
+
+        if(isBottomFooter) {
+
+            for (int i = 0; i < rowResult.length; i++) {
+                rowResult[i] = setColValInAgg(i);
+            }
+            for (int i = tableStartCol; i < tableEndCol; i++) {
+                data[tableEndRow - 1][i] = rowResult[i];
+            }
+
+        }
+
+        if(isRightFooter){
+
+            for (int i = 0; i < colResult.length; i++) {
+                colResult[i] = setRowValInAgg(i);
+            }
+            for (int i = tableStartRow; i < tableEndRow; i++) {
+                data[i][tableEndCol - 1] = colResult[i];
+            }
+
+        }
+
+    }
 
 }
