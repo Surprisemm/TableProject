@@ -44,13 +44,20 @@ public class MyTableModel extends AbstractTableModel {
         rowAggregator = invokeAgg(rightFooterData);
         colAggregator = invokeAgg(bottomFooterData);
 
-        rowResult = new double[rowData];
-        colResult = new double[colData];
+        System.out.println(tableStartRow + " " + tableEndRow);
+        System.out.println(tableStartCol + " " + tableEndCol);
 
         //Изменение размеров таблицы с учетом чекбоксов
         configureTable();
 
+        System.out.println("---------------------");
+        System.out.println(tableStartRow + " " + tableEndRow);
+        System.out.println(tableStartCol + " " + tableEndCol);
+
         data =  new Object[rowData][colData];
+
+        rowResult = new double[rowData];
+        colResult = new double[colData];
 
        /* for (int i = tableStartRow; i < tableEndRow; i++) {
             for (int j = tableStartCol; j < tableEndCol; j++) {
@@ -107,17 +114,28 @@ public class MyTableModel extends AbstractTableModel {
 
         if(isBottomFooter) {
 
-            setColValInAgg(3);
-            System.out.println("res = " + colAggregator.getResult());
-
             for (int i = 0; i < rowResult.length; i++) {
-                setColValInAgg(i);
-                rowResult[i] = colAggregator.getResult();
+                rowResult[i] = setColValInAgg(i);
+            }
+            for (int i = tableStartCol; i < tableEndCol; i++) {
+                data[tableEndRow - 1][i] = rowResult[i];
+            }
+
+        }
+
+        if(isRightFooter){
+
+            for (int i = 0; i < colResult.length; i++) {
+                colResult[i] = setRowValInAgg(i);
+            }
+            for (int i = tableStartRow; i < tableEndRow-1; i++) {
+                data[i][tableEndCol - 1] = colResult[i];
             }
 
         }
 
 
+        fireTableDataChanged();
 
       /*  for (int i = 0; i < getRowCount(); i++) {
             for (int j = 0; j < getColumnCount(); j++) {
@@ -213,16 +231,46 @@ public class MyTableModel extends AbstractTableModel {
         return null;
     }
 
-    private void setColValInAgg(int columnIndex) {
+    private double setColValInAgg(int columnIndex) {
+
         colAggregator.reset();
 
         for (int rowIndex = tableStartRow; rowIndex < tableEndRow; rowIndex++) {
             Object[] row = data[rowIndex];
             if (columnIndex < row.length && row[columnIndex] != null) {
-                System.out.println(row[columnIndex]);
                 colAggregator.addValue(row[columnIndex]);
             }
         }
+
+        return colAggregator.getResult();
+
     }
+
+    private  double setRowValInAgg(int rowIndex) {
+
+        rowAggregator.reset();
+
+        for (int colIndex = tableStartCol; colIndex < tableEndCol; colIndex++) {
+            Object col = data[rowIndex][colIndex];
+            if(col != null) {
+                rowAggregator.addValue(col);
+            }
+        }
+
+        return rowAggregator.getResult();
+
+    }
+
+    private double setValInAgg(int start, int end, int index, Aggregator aggregator) {
+        aggregator.reset();
+        for (int i = start; i < end; i++) {
+            Object[] items = data[i];
+            if (index < items.length && items[index] != null) {
+                aggregator.addValue(items[index]);
+            }
+        }
+        return aggregator.getResult();
+    }
+
 
 }

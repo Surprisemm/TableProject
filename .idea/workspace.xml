@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="acfd2cd0-522f-4c5b-9311-c49538053e08" name="Changes" comment="Коммит перед добавлением агрегатора">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/miglayout15_swing.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregator.java" afterDir="false" />
+    <list default="true" id="acfd2cd0-522f-4c5b-9311-c49538053e08" name="Changes" comment="Коммит до переделки SetColValInAgg">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Aggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aggregator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyTableModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +76,7 @@
       <workItem from="1684923299044" duration="7050000" />
       <workItem from="1685088939486" duration="12605000" />
       <workItem from="1685137039018" duration="9108000" />
-      <workItem from="1685449554643" duration="1369000" />
+      <workItem from="1685449554643" duration="6664000" />
     </task>
     <task id="LOCAL-00001" summary="commit test">
       <created>1684490461798</created>
@@ -206,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685109857144</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Коммит до переделки SetColValInAgg">
+      <created>1685455373782</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1685455373782</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,6 +247,7 @@
     <MESSAGE value="MyTable создаются все столбцы и строки. обновления ячеек есть. коммит перед добавлением подсчетов в итогах. Все ОК. Добавить подсчет итогов ~~" />
     <MESSAGE value="MyTable создаются все столбцы и строки. обновления ячеек есть. Коммит перед переделкой конструктора" />
     <MESSAGE value="Коммит перед добавлением агрегатора" />
-    <option name="LAST_COMMIT_MESSAGE" value="Коммит перед добавлением агрегатора" />
+    <MESSAGE value="Коммит до переделки SetColValInAgg" />
+    <option name="LAST_COMMIT_MESSAGE" value="Коммит до переделки SetColValInAgg" />
   </component>
 </project>

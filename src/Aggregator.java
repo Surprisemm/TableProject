@@ -156,18 +156,17 @@ class MinAgg implements Aggregator{
 class SqdSumAgg implements Aggregator{
 
     private double sqdSum = 0;
+    private double tmp;
 
     @Override
     public void addValue(Object value) {
-
-        try {
-            double tmp = Double.parseDouble((String) value);
-
-            if (value instanceof String) {
+        if (value instanceof String) {
+            try {
+                tmp = Double.parseDouble((String) value);
                 sqdSum += tmp * tmp;
+            } catch (NumberFormatException e) {
+                System.out.println("В ячейке не число");
             }
-        }catch (NumberFormatException e){
-            System.out.println("В ячейке не число");
         }
     }
 
@@ -179,6 +178,7 @@ class SqdSumAgg implements Aggregator{
     @Override
     public void reset() {
         sqdSum = 0d;
+        tmp = 0d;
     }
 
 }
