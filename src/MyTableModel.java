@@ -16,7 +16,6 @@ public class MyTableModel extends AbstractTableModel {
     public boolean isRoundingCheck;
     private String rightFooterData;
     private String bottomFooterData;
-
     private int tableStartCol = 0;
     private int tableStartRow = 0;
     private int tableEndCol;
@@ -44,20 +43,13 @@ public class MyTableModel extends AbstractTableModel {
         rowAggregator = invokeAgg(rightFooterData);
         colAggregator = invokeAgg(bottomFooterData);
 
-        System.out.println(tableStartRow + " " + tableEndRow);
-        System.out.println(tableStartCol + " " + tableEndCol);
-
         //Изменение размеров таблицы с учетом чекбоксов
         configureTable();
 
-        System.out.println("---------------------");
-        System.out.println(tableStartRow + " " + tableEndRow);
-        System.out.println(tableStartCol + " " + tableEndCol);
-
         data =  new Object[rowData][colData];
 
-        rowResult = new double[rowData+1];
-        colResult = new double[colData+1];
+        rowResult = new double[rowData + 1];
+        colResult = new double[colData + 1];
 
        /* for (int i = tableStartRow; i < tableEndRow; i++) {
             for (int j = tableStartCol; j < tableEndCol; j++) {
@@ -203,10 +195,10 @@ public class MyTableModel extends AbstractTableModel {
 
         colAggregator.reset();
 
-        for (int rowIndex = 0; rowIndex < rowData; rowIndex++) {
+        for (int rowIndex = 0; rowIndex < rowData - 1; rowIndex++) {
             Object[] row = data[rowIndex];
             if (columnIndex < row.length && row[columnIndex] != null) {
-                colAggregator.addValue(row[columnIndex]);
+                colAggregator.addValue(objToDbl(row[columnIndex]));
             }
         }
 
@@ -218,10 +210,10 @@ public class MyTableModel extends AbstractTableModel {
 
         rowAggregator.reset();
 
-        for (int colIndex = 0; colIndex < colData; colIndex++) {
+        for (int colIndex = 0; colIndex < colData - 1; colIndex++) {
             Object col = data[rowIndex][colIndex];
             if(col != null) {
-                rowAggregator.addValue(col);
+                rowAggregator.addValue(objToDbl(col));
             }
         }
 
@@ -237,7 +229,7 @@ public class MyTableModel extends AbstractTableModel {
                 rowResult[i] = setColValInAgg(i);
             }
             for (int i = tableStartCol; i < tableEndCol; i++) {
-                data[tableEndRow - 1][i] = rowResult[i];
+                data[tableEndRow - 1][i] = applyRounding(rowResult[i]);
             }
 
         }
@@ -248,13 +240,37 @@ public class MyTableModel extends AbstractTableModel {
                 colResult[i] = setRowValInAgg(i);
             }
             for (int i = tableStartRow; i < tableEndRow; i++) {
-                data[i][tableEndCol - 1] = colResult[i];
+                data[i][tableEndCol - 1] = applyRounding(colResult[i]);
             }
 
         }
 
         data[tableEndRow - 1][tableEndCol - 1] = " ";
 
+    }
+
+    private double objToDbl (Object obj) {
+
+        if (obj == null) {
+            return 0.0;
+        }
+
+        String str = obj.toString();
+
+        try {
+            return Double.parseDouble(str);
+        } catch (NumberFormatException e) {
+            return 0.0;
+        }
+
+    }
+
+    private double applyRounding(double value) {
+        if (isRoundingCheck) {
+            return Math.round(value * Math.pow(10, roundingData)) / Math.pow(10, roundingData);
+        } else {
+            return value;
+        }
     }
 
 }

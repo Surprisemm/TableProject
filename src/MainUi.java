@@ -24,8 +24,11 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
 
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension dimension = tk.getScreenSize();
-        int windowDimWidth = tk.getScreenSize().width;
-        int windowDimHeight = tk.getScreenSize().height;
+        //int windowDimWidth = tk.getScreenSize().width ;
+        //  int windowDimHeight = tk.getScreenSize().height ;
+
+        int windowDimWidth = 500 ;
+        int windowDimHeight = 500 ;
 
         this.setBounds(dimension.width / 2 - windowDimWidth / 2, dimension.height / 2 - windowDimHeight / 2, windowDimWidth, windowDimHeight);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,7 +77,8 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
 
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         mainPanel.add(tablePanel);
-        mainPanel.setPreferredSize(dimension);
+//         mainPanel.setPreferredSize(dimension);
+         mainPanel.setPreferredSize(new Dimension(500, 500));
 
         getContentPane().add(mainPanel);
         pack();

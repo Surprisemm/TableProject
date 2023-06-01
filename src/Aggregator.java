@@ -1,5 +1,5 @@
 public interface Aggregator {
-    void addValue(Object value);
+    void addValue(double value);
     double getResult();
     void reset();
 }
@@ -9,14 +9,8 @@ class SumAgg implements Aggregator{
     private double res = 0;
 
     @Override
-    public void addValue(Object value) {
-        if(value instanceof String) {
-            try {
-                res += Double.parseDouble((String) value);
-            } catch (NumberFormatException e) {
-                System.out.println("В ячейке не число");
-            }
-        }
+    public void addValue(double value) {
+        res += value;
     }
 
     @Override
@@ -36,16 +30,11 @@ class AverageAgg implements Aggregator{
     private double count = 0;
 
     @Override
-    public void addValue(Object value) {
+    public void addValue(double value) {
 
-        try {
-            if (value instanceof String) {
-                sum += Double.parseDouble((String) value);
-                count++;
-            }
-        }catch (NumberFormatException e){
-            System.out.println("В ячейке не число");
-        }
+        sum += value;
+        count++;
+
     }
 
     @Override
@@ -66,18 +55,9 @@ class CounterAgg implements Aggregator{
     private double count = 0;
 
     @Override
-    public void addValue(Object value) {
+    public void addValue(double value) {
 
-        double flag = 0;
-
-        if(value instanceof String) {
-            try {
-                flag = Double.parseDouble((String) value);
-                count++;
-            } catch (NumberFormatException e) {
-                System.out.println("В ячейке не число");
-            }
-        }
+        count++;
 
     }
 
@@ -98,17 +78,12 @@ class MaxAgg implements Aggregator{
     private double maxValue = 0;
 
     @Override
-    public void addValue(Object value) {
+    public void addValue(double value) {
 
-        try {
-            if (value instanceof String) {
-                if (maxValue < Double.parseDouble((String) value)) {
-                    maxValue = Double.parseDouble((String) value);
-                }
-            }
-        }catch (NumberFormatException e){
-            System.out.println("В ячейке не число");
+        if (maxValue < value) {
+            maxValue = value;
         }
+
     }
 
     @Override
@@ -128,17 +103,12 @@ class MinAgg implements Aggregator{
     private double minValue = 0;
 
     @Override
-    public void addValue(Object value) {
+    public void addValue(double value) {
 
-        try {
-            if (value instanceof String) {
-                if (minValue > Double.parseDouble((String) value)) {
-                    minValue = Double.parseDouble((String) value);
-                }
-            }
-        }catch (NumberFormatException e){
-            System.out.println("В ячейке не число");
+        if (minValue > value) {
+            minValue = value;
         }
+
     }
 
     @Override
@@ -159,15 +129,11 @@ class SqdSumAgg implements Aggregator{
     private double tmp;
 
     @Override
-    public void addValue(Object value) {
-        if (value instanceof String) {
-            try {
-                tmp = Double.parseDouble((String) value);
-                sqdSum += tmp * tmp;
-            } catch (NumberFormatException e) {
-                System.out.println("В ячейке не число");
-            }
-        }
+    public void addValue(double value) {
+
+        tmp = value;
+        sqdSum += tmp * tmp;
+
     }
 
     @Override
