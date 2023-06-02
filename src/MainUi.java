@@ -1,12 +1,6 @@
-import org.w3c.dom.ls.LSOutput;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Класс - добавляет меню для открытия окна настройки таблицы,
@@ -15,12 +9,9 @@ import java.awt.event.ActionListener;
  */
 public class MainUi extends JFrame implements MyOptions.OptionsCallback {
 
-    private MyTable myTable;
-    private MyOptions optionsWindow = new MyOptions();
-    private JPanel tablePanel;
-    private JPanel mainPanel = new JPanel();
-    private MyTableModel tableModel;
-    private GridBagConstraints gbc;
+    private final MyOptions optionsWindow = new MyOptions();
+    private final JPanel tablePanel;
+    private final GridBagConstraints gbc;
 
 
     public MainUi(){
@@ -29,8 +20,6 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
 
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension dimension = tk.getScreenSize();
-//        int windowDimWidth = tk.getScreenSize().width;
-//        int windowDimHeight = tk.getScreenSize().height;
 
         int windowDimWidth = 600;
         int windowDimHeight = 500;
@@ -47,19 +36,16 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
         menuBar.add(fileMenu, BorderLayout.WEST);
         setJMenuBar(menuBar);
 
-        menuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame parentFrame = MainUi.this;
-                MyOptions optionsWindow = new MyOptions();
-                optionsWindow.setOptionsCallback(MainUi.this);
-                JDialog dialog = new JDialog(parentFrame, "Options", true);
-                dialog.setResizable(false);
-                dialog.getContentPane().add(optionsWindow);
-                dialog.pack();
-                dialog.setLocationRelativeTo(parentFrame);
-                dialog.setVisible(true);
-            }
+        menuItem.addActionListener(e -> {
+            JFrame parentFrame = MainUi.this;
+            MyOptions optionsWindow = new MyOptions();
+            optionsWindow.setOptionsCallback(MainUi.this);
+            JDialog dialog = new JDialog(parentFrame, "Options", true);
+            dialog.setResizable(false);
+            dialog.getContentPane().add(optionsWindow);
+            dialog.pack();
+            dialog.setLocationRelativeTo(parentFrame);
+            dialog.setVisible(true);
         });
 
         tablePanel = new JPanel(new GridBagLayout());
@@ -72,6 +58,7 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
 
+        JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         mainPanel.add(tablePanel);
         mainPanel.setPreferredSize(new Dimension(500, 500));
@@ -98,9 +85,9 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
                                       String rightFooterData, String bottomFooterData) {
         tablePanel.removeAll();
 
-        tableModel = new MyTableModel(rowData, colData, roundingData, isTopHeader, isLeftHeader,
+        MyTableModel tableModel = new MyTableModel(rowData, colData, roundingData, isTopHeader, isLeftHeader,
                 isRightFooter, isBottomFooter, isRoundingCheck, rightFooterData, bottomFooterData);
-        myTable = new MyTable(tableModel);
+        MyTable myTable = new MyTable(tableModel);
 
         tablePanel.add(new JScrollPane(myTable), gbc);
 
@@ -108,5 +95,4 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
         tablePanel.repaint();
 
     }
-
 }

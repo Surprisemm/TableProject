@@ -1,4 +1,5 @@
 import javax.swing.table.AbstractTableModel;
+import java.util.Arrays;
 
 /**
  * Класс - модель таблицы, тут обрабатываются все указанные данные и заполняются ячейки таблицы сооответственно
@@ -6,28 +7,26 @@ import javax.swing.table.AbstractTableModel;
  * Created by Nikita.Manzhukov on 01.06.2023
  */
 public class MyTableModel extends AbstractTableModel {
-    private Object[][] data;
-    private boolean[] rowEditable;
-    private boolean[] columnEditable;
+    private final Object[][] data;
+    private final boolean[] rowEditable;
+    private final boolean[] columnEditable;
 
     private int rowData;
     private int colData;
     public int roundingData;
-    private boolean isTopHeader;
-    private boolean isLeftHeader;
-    private boolean isRightFooter;
-    private boolean isBottomFooter;
+    private final boolean isTopHeader;
+    private final boolean isLeftHeader;
+    private final boolean isRightFooter;
+    private final boolean isBottomFooter;
     public boolean isRoundingCheck;
-    private String rightFooterData;
-    private String bottomFooterData;
     private int tableStartCol = 0;
     private int tableStartRow = 0;
     private int tableEndCol;
     private int tableEndRow;
-    private Aggregator rowAggregator;
-    private Aggregator colAggregator;
-    private double[] rowResult;
-    private double[] colResult;
+    private final Aggregator rowAggregator;
+    private final Aggregator colAggregator;
+    private final double[] rowResult;
+    private final double[] colResult;
 
     public MyTableModel(int rd, int cd, int rod, boolean ith, boolean ilh,
                         boolean irf, boolean ibf, boolean irc,
@@ -41,11 +40,9 @@ public class MyTableModel extends AbstractTableModel {
         isRightFooter = irf;
         isBottomFooter = ibf;
         isRoundingCheck = irc;
-        rightFooterData = rfd;
-        bottomFooterData = bfd;
 
-        rowAggregator = invokeAgg(rightFooterData);
-        colAggregator = invokeAgg(bottomFooterData);
+        rowAggregator = invokeAgg(rfd);
+        colAggregator = invokeAgg(bfd);
 
         configureTable();
 
@@ -60,12 +57,8 @@ public class MyTableModel extends AbstractTableModel {
         rowEditable = new boolean[getRowCount()];
         columnEditable = new boolean[getColumnCount()];
         // По умолчанию все строки и столбцы редактируемые
-        for (int i = 0; i < rowEditable.length; i++) {
-            rowEditable[i] = true;
-        }
-        for (int i = 0; i < columnEditable.length; i++) {
-            columnEditable[i] = true;
-        }
+        Arrays.fill(rowEditable, true);
+        Arrays.fill(columnEditable, true);
     }
 
     @Override

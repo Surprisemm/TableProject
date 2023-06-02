@@ -1,11 +1,6 @@
-import com.sun.applet2.preloader.event.ConfigEvent;
 import net.miginfocom.swing.MigLayout;
-
-import javax.print.DocFlavor;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
 /**
@@ -14,7 +9,6 @@ import java.awt.event.ItemEvent;
  */
 public class MyOptions extends JPanel {
 
-    private int maxElSize = 30;
     private OptionsCallback callback;
 
     public MyOptions() {
@@ -49,17 +43,18 @@ public class MyOptions extends JPanel {
         roundingValue.setValue(2);
         roundingValue.setEnabled(false);
 
+        int maxElSize = 30;
         rowValue.setPreferredSize(new Dimension(200, maxElSize));
         colValue.setPreferredSize(new Dimension(200, maxElSize));
         roundingValue.setPreferredSize(new Dimension(20, maxElSize));
 
-        JComboBox rightFooterCombo = new JComboBox<>();
-        JComboBox bottomFooterCombo = new JComboBox<>();
+        JComboBox<Object> rightFooterCombo = new JComboBox<>();
+        JComboBox<Object> bottomFooterCombo = new JComboBox<>();
 
         rightFooterCombo.setEnabled(false);
         bottomFooterCombo.setEnabled(false);
 
-        DefaultComboBoxModel<String> footerModel = new DefaultComboBoxModel<>();
+        DefaultComboBoxModel<Object> footerModel = new DefaultComboBoxModel<>();
         footerModel.addElement("Сумма");
         footerModel.addElement("Количество");
         footerModel.addElement("Среднее");
@@ -67,7 +62,7 @@ public class MyOptions extends JPanel {
         footerModel.addElement("Минимум");
         footerModel.addElement("Сумма квадратов");
 
-        DefaultComboBoxModel<String> footerModel_2 = new DefaultComboBoxModel<>();
+        DefaultComboBoxModel<Object> footerModel_2 = new DefaultComboBoxModel<>();
         for (int i = 0; i < footerModel.getSize(); i++) {
             footerModel_2.addElement(footerModel.getElementAt(i));
         }
@@ -105,12 +100,7 @@ public class MyOptions extends JPanel {
             }
         });
 
-        cancelButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                closeWindow();
-            }
-        });
+        cancelButton.addActionListener(e -> closeWindow());
 
         roundingCheck.addItemListener(e -> {
             boolean isSelected = e.getStateChange() == ItemEvent.SELECTED;
