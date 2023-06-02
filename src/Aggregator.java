@@ -1,9 +1,15 @@
+/**
+ * Аггрегатор - получает зачение и обраватывает, в сообветствии с указанным вариантом,
+ */
 public interface Aggregator {
     void addValue(double value);
     double getResult();
     void reset();
 }
 
+/**
+ * Сумма чисел
+ */
 class SumAgg implements Aggregator{
 
     private double res = 0;
@@ -24,6 +30,9 @@ class SumAgg implements Aggregator{
     }
 }
 
+/**
+ * Среднее значение
+ */
 class AverageAgg implements Aggregator{
 
     private double sum = 0;
@@ -50,6 +59,9 @@ class AverageAgg implements Aggregator{
 
 }
 
+/**
+ * Количество
+ */
 class CounterAgg implements Aggregator{
 
     private double count = 0;
@@ -73,6 +85,9 @@ class CounterAgg implements Aggregator{
 
 }
 
+/**
+ * Максимальное значение
+ */
 class MaxAgg implements Aggregator{
 
     private double maxValue = 0;
@@ -98,6 +113,9 @@ class MaxAgg implements Aggregator{
 
 }
 
+/**
+ * Минимальное значение
+ */
 class MinAgg implements Aggregator{
 
     private double minValue = 0;
@@ -123,6 +141,9 @@ class MinAgg implements Aggregator{
 
 }
 
+/**
+ * Сумма квадратов
+ */
 class SqdSumAgg implements Aggregator{
 
     private double sqdSum = 0;

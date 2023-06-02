@@ -8,6 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
+/**
+ * Класс - Окно с настройками для модели
+ * Created by Nikita.Manzhukov on 01.06.2023
+ */
 public class MyOptions extends JPanel {
 
     private int maxElSize = 30;
@@ -55,7 +59,6 @@ public class MyOptions extends JPanel {
         rightFooterCombo.setEnabled(false);
         bottomFooterCombo.setEnabled(false);
 
-        // Заполнение JComboBox элементами
         DefaultComboBoxModel<String> footerModel = new DefaultComboBoxModel<>();
         footerModel.addElement("Сумма");
         footerModel.addElement("Количество");
@@ -75,7 +78,6 @@ public class MyOptions extends JPanel {
         rightFooterCombo.setPreferredSize(new Dimension(200, maxElSize));
         bottomFooterCombo.setPreferredSize(new Dimension(200, maxElSize));
 
-        // Панель с кнопками ---------------------------------------
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new MigLayout("nogrid, gap 20"));
 
@@ -109,9 +111,7 @@ public class MyOptions extends JPanel {
                 closeWindow();
             }
         });
-        //----------------------------------------------------------
 
-        // Взаимодействие элементов
         roundingCheck.addItemListener(e -> {
             boolean isSelected = e.getStateChange() == ItemEvent.SELECTED;
             roundingValue.setEnabled(isSelected);
@@ -127,9 +127,6 @@ public class MyOptions extends JPanel {
             bottomFooterCombo.setEnabled(isSelected);
         });
 
-        //тут настроить внешний вид
-
-        // Установка шрифта для компонентов с текстом
         rowLable.setFont(font);
         colLable.setFont(font);
         roundingText.setFont(font);
@@ -143,25 +140,20 @@ public class MyOptions extends JPanel {
         insButton.setFont(font);
         cancelButton.setFont(font);
 
-        // 1 строка
         add(rowLable);
         add(rowValue);
         add(colLable);
         add(colValue,"growx");
 
-        // 2 строка
         add(topHeader, "span 2");
         add(leftHeader, "span 2");
 
-        // 3 str
         add(bottomFooter, "span 2");
         add(bottomFooterCombo, "span 2, growx");
 
-        // 4 str
         add(rightFooter, "span 2");
         add(rightFooterCombo, "span 2, growx");
 
-        // 5 str
         JPanel roundingPanel = new JPanel(new MigLayout("insets 0 0 0 0, wrap 3", "[pref!][60][pref!]", ""));
         roundingPanel.add(roundingCheck);
         roundingPanel.add(roundingValue);
@@ -170,23 +162,31 @@ public class MyOptions extends JPanel {
 
         add(new JSeparator(), "span, growx");
 
-        // 6 str
         add(buttonsPanel, "span, alignx right");
 
         setVisible(true);
 
     }
 
+    /**
+     * Колбек функция для передачи указанных данных при нажатии кнопки
+     */
     public interface OptionsCallback {
         void onInsertButtonClicked(int rowData, int colData, int roundingData, boolean isTopHeader, boolean isLeftHeader,
                                    boolean isRightFooter, boolean isBottomFooter, boolean isRoundingCheck,
                                    String rightFooterData, String bottomFooterData);
     }
 
+    /**
+     * Устанавливает колбэк-функцию, которая будет использоваться внутри класса
+     */
     public void setOptionsCallback(OptionsCallback callback) {
         this.callback = callback;
     }
 
+    /**
+     * Закрывает окно
+     */
     public void closeWindow() {
         Window window = SwingUtilities.getWindowAncestor(this);
         if (window instanceof Dialog) {

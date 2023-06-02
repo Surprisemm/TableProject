@@ -1,6 +1,10 @@
 import javax.swing.table.AbstractTableModel;
 
-
+/**
+ * Класс - модель таблицы, тут обрабатываются все указанные данные и заполняются ячейки таблицы сооответственно
+ * Обрабатываются значения введенные в ячейки
+ * Created by Nikita.Manzhukov on 01.06.2023
+ */
 public class MyTableModel extends AbstractTableModel {
     private Object[][] data;
     private boolean[] rowEditable;
@@ -43,19 +47,12 @@ public class MyTableModel extends AbstractTableModel {
         rowAggregator = invokeAgg(rightFooterData);
         colAggregator = invokeAgg(bottomFooterData);
 
-        //Изменение размеров таблицы с учетом чекбоксов
         configureTable();
 
         data =  new Object[rowData][colData];
 
         rowResult = new double[rowData + 1];
         colResult = new double[colData + 1];
-
-       /* for (int i = tableStartRow; i < tableEndRow; i++) {
-            for (int j = tableStartCol; j < tableEndCol; j++) {
-                data[i][j] = "Nikita " + i + " " + j;
-            }
-        }*/
 
         tableEndRow = rowData;
         tableEndCol = colData;
@@ -89,6 +86,11 @@ public class MyTableModel extends AbstractTableModel {
         return data[rowIndex][columnIndex];
     }
 
+    /**
+     * При изменении значения в ячейке
+     * Ячейкам присваивается указанное значение
+     * Обновляются итоги
+     */
     public void setValueAt(Object value, int rowIndex, int columnIndex){
 
         data[rowIndex][columnIndex] = value;
@@ -97,15 +99,6 @@ public class MyTableModel extends AbstractTableModel {
 
         fireTableDataChanged();
 
-      /*  for (int i = 0; i < getRowCount(); i++) {
-            for (int j = 0; j < getColumnCount(); j++) {
-                System.out.print(data[i][j] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println("------------------");
-        System.out.println(value + " " + rowIndex + " " + columnIndex);
-        System.out.println("------------------");*/
     }
 
     @Override
@@ -113,18 +106,27 @@ public class MyTableModel extends AbstractTableModel {
         return rowEditable[row] && columnEditable[column];
     }
 
+    /**
+     * Указывает редактируемость строки
+     */
     public void setRowEditable(int rowIndex, boolean editable) {
         if (rowIndex >= 0 && rowIndex < rowEditable.length) {
             rowEditable[rowIndex] = editable;
         }
     }
 
+    /**
+     * Указывает редактируемость столбца
+     */
     public void setColumnEditable(int columnIndex, boolean editable) {
         if (columnIndex >= 0 && columnIndex < columnEditable.length) {
             columnEditable[columnIndex] = editable;
         }
     }
 
+    /**
+     * Увеличивает размер таблицы в зависимости от наличия заголовков и итогов
+     */
     public void configureTable() {
         if (isTopHeader) {
             rowData++;
@@ -144,6 +146,9 @@ public class MyTableModel extends AbstractTableModel {
         }
     }
 
+    /**
+     * Устанавливает текст в ячейки заголовков и итогов и делает их нередактируемыми
+     */
     public void updateHeaderText(){
         if (isTopHeader){
             int n = 1;
@@ -171,6 +176,9 @@ public class MyTableModel extends AbstractTableModel {
         }
     }
 
+    /**
+     * Возвращает указанный агрегатор
+     */
     private Aggregator invokeAgg(String agg) {
 
         switch (agg) {
@@ -191,6 +199,9 @@ public class MyTableModel extends AbstractTableModel {
         return null;
     }
 
+    /**
+     * Передает в агрегатор все значения указанного столбца и возвращает результат
+     */
     private double setColValInAgg(int columnIndex) {
 
         colAggregator.reset();
@@ -206,6 +217,9 @@ public class MyTableModel extends AbstractTableModel {
 
     }
 
+    /**
+     * Передает в агрегатор все значения указанной строки и возвращает результат
+     */
     private  double setRowValInAgg(int rowIndex) {
 
         rowAggregator.reset();
@@ -221,6 +235,10 @@ public class MyTableModel extends AbstractTableModel {
 
     }
 
+    /**
+     * Обновляет итоги значениями из агрегаторов
+     * Округляет значения если нужно
+     */
     private void updateFooters(){
 
         if(isBottomFooter) {
@@ -249,6 +267,9 @@ public class MyTableModel extends AbstractTableModel {
 
     }
 
+    /**
+     * Конвертирует данные в число double если это возможно
+     */
     private double objToDbl (Object obj) {
 
         if (obj == null) {
@@ -265,6 +286,10 @@ public class MyTableModel extends AbstractTableModel {
 
     }
 
+    /**
+     * Применяет округление, если нужно
+     * Если нет, то ничего не делает
+     */
     private double applyRounding(double value) {
         if (isRoundingCheck) {
             return Math.round(value * Math.pow(10, roundingData)) / Math.pow(10, roundingData);
