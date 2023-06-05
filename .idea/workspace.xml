@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="acfd2cd0-522f-4c5b-9311-c49538053e08" name="Changes" comment="Финал 2">
+    <list default="true" id="acfd2cd0-522f-4c5b-9311-c49538053e08" name="Changes" comment="Финальный финал">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Aggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aggregator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainUi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyTable.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyTableModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,18 +34,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/User/Documents/repo/libs/miglayout15-swing.jar",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "Errors"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Documents/repo/libs/miglayout15-swing.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\Documents\repo\TableProject\src" />
@@ -79,7 +81,9 @@
       <workItem from="1685137039018" duration="9108000" />
       <workItem from="1685449554643" duration="22295000" />
       <workItem from="1685655050156" duration="111000" />
-      <workItem from="1685706368067" duration="4611000" />
+      <workItem from="1685706368067" duration="4649000" />
+      <workItem from="1685715604604" duration="107000" />
+      <workItem from="1685993181971" duration="4257000" />
     </task>
     <task id="LOCAL-00001" summary="commit test">
       <created>1684490461798</created>
@@ -256,7 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685713124520</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Финальный финал">
+      <created>1685715513365</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1685715513365</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,7 +285,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="commit test 2" />
     <MESSAGE value="MyOptions 50% внешнего вида" />
     <MESSAGE value="MyOptions 54% внешнего вида" />
     <MESSAGE value="MyOptions 56% внешнего вида" />
@@ -299,6 +309,7 @@
     <MESSAGE value="что-то не рабочее" />
     <MESSAGE value="Финал" />
     <MESSAGE value="Финал 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Финал 2" />
+    <MESSAGE value="Финальный финал" />
+    <option name="LAST_COMMIT_MESSAGE" value="Финальный финал" />
   </component>
 </project>

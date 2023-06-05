@@ -19,6 +19,8 @@ public class MyTableModel extends AbstractTableModel {
     private final boolean isRightFooter;
     private final boolean isBottomFooter;
     public boolean isRoundingCheck;
+    private final String rightFooterData;
+    private final String bottomFooterData;
     private int tableStartCol = 0;
     private int tableStartRow = 0;
     private int tableEndCol;
@@ -40,6 +42,8 @@ public class MyTableModel extends AbstractTableModel {
         isRightFooter = irf;
         isBottomFooter = ibf;
         isRoundingCheck = irc;
+        rightFooterData = rfd;
+        bottomFooterData = bfd;
 
         rowAggregator = invokeAgg(rfd);
         colAggregator = invokeAgg(bfd);
@@ -48,8 +52,8 @@ public class MyTableModel extends AbstractTableModel {
 
         data =  new Object[rowData][colData];
 
-        rowResult = new double[rowData + 1];
-        colResult = new double[colData + 1];
+        rowResult = new double[colData + 1];
+        colResult = new double[rowData + 1];
 
         tableEndRow = rowData;
         tableEndCol = colData;
@@ -59,6 +63,8 @@ public class MyTableModel extends AbstractTableModel {
         // По умолчанию все строки и столбцы редактируемые
         Arrays.fill(rowEditable, true);
         Arrays.fill(columnEditable, true);
+
+        updateHeaderText();
     }
 
     @Override
@@ -127,7 +133,7 @@ public class MyTableModel extends AbstractTableModel {
         }
         if (isBottomFooter) {
             rowData++;
-            tableEndRow = rowData - 1;
+            tableEndRow = tableEndRow - 1;
         }
         if (isLeftHeader) {
             colData++;
@@ -135,7 +141,7 @@ public class MyTableModel extends AbstractTableModel {
         }
         if (isRightFooter) {
             colData++;
-            tableEndCol = colData - 1;
+            tableEndCol = tableEndCol - 1;
         }
     }
 
@@ -161,10 +167,12 @@ public class MyTableModel extends AbstractTableModel {
         }
         if(isBottomFooter){
             data[rowData - 1][0] = "";
+            if(isLeftHeader) data[rowData - 1][0] = bottomFooterData;
             setRowEditable(rowData - 1,false);
         }
         if(isRightFooter){
             data[0][colData - 1] = "";
+            if(isTopHeader) data[0][colData - 1] = rightFooterData;
             setColumnEditable(colData - 1,false);
         }
     }
@@ -237,7 +245,9 @@ public class MyTableModel extends AbstractTableModel {
         if(isBottomFooter) {
 
             for (int i = 0; i < rowResult.length; i++) {
-                rowResult[i] = setColValInAgg(i);
+                try {
+                    rowResult[i] = setColValInAgg(i);
+                }catch (Exception ignored){}
             }
             for (int i = tableStartCol; i < tableEndCol; i++) {
                 data[tableEndRow - 1][i] = applyRounding(rowResult[i]);
@@ -248,8 +258,10 @@ public class MyTableModel extends AbstractTableModel {
         if(isRightFooter){
 
             for (int i = 0; i < colResult.length; i++) {
-                colResult[i] = setRowValInAgg(i);
-            }
+                try {
+                    colResult[i] = setRowValInAgg(i);
+                }catch (Exception ignored){}
+                }
             for (int i = tableStartRow; i < tableEndRow; i++) {
                 data[i][tableEndCol - 1] = applyRounding(colResult[i]);
             }

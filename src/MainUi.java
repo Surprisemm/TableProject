@@ -27,6 +27,8 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
         this.setBounds(dimension.width / 2 - windowDimWidth / 2, dimension.height / 2 - windowDimHeight / 2, windowDimWidth, windowDimHeight);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        setUIFont(new javax.swing.plaf.FontUIResource("Arial", Font.PLAIN, 18));
+
         JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("Файл");
         JMenuItem menuItem = new JMenuItem("Старт");
@@ -87,12 +89,25 @@ public class MainUi extends JFrame implements MyOptions.OptionsCallback {
 
         MyTableModel tableModel = new MyTableModel(rowData, colData, roundingData, isTopHeader, isLeftHeader,
                 isRightFooter, isBottomFooter, isRoundingCheck, rightFooterData, bottomFooterData);
-        MyTable myTable = new MyTable(tableModel);
+
+        JTable myTable = new JTable(tableModel);
+        myTable.setTableHeader(null);
 
         tablePanel.add(new JScrollPane(myTable), gbc);
 
         tablePanel.revalidate();
         tablePanel.repaint();
 
+    }
+
+    public static void setUIFont (javax.swing.plaf.FontUIResource f){
+        java.util.Enumeration keys = UIManager.getDefaults().keys();
+        while(keys.hasMoreElements()){
+            Object key = keys.nextElement();
+            Object value = UIManager.get(key);
+            if(value instanceof javax.swing.plaf.FontUIResource){
+                UIManager.put(key, f);
+            }
+        }
     }
 }

@@ -41,6 +41,7 @@ class AverageAgg implements Aggregator{
     @Override
     public void addValue(double value) {
 
+
         sum += value;
         count++;
 

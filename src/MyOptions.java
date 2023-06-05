@@ -15,7 +15,6 @@ public class MyOptions extends JPanel {
         super();
 
         setLayout(new MigLayout("insets 8 8 4 8, wrap 4, fill", "[pref!][230!]0[pref!][fill]", ""));
-        Font font = new Font("Tahoma", Font.PLAIN, 18);
         setPreferredSize(new Dimension(640, 340));
 
 
@@ -43,11 +42,6 @@ public class MyOptions extends JPanel {
         roundingValue.setValue(2);
         roundingValue.setEnabled(false);
 
-        int maxElSize = 30;
-        rowValue.setPreferredSize(new Dimension(200, maxElSize));
-        colValue.setPreferredSize(new Dimension(200, maxElSize));
-        roundingValue.setPreferredSize(new Dimension(20, maxElSize));
-
         JComboBox<Object> rightFooterCombo = new JComboBox<>();
         JComboBox<Object> bottomFooterCombo = new JComboBox<>();
 
@@ -69,9 +63,6 @@ public class MyOptions extends JPanel {
 
         rightFooterCombo.setModel(footerModel);
         bottomFooterCombo.setModel(footerModel_2);
-
-        rightFooterCombo.setPreferredSize(new Dimension(200, maxElSize));
-        bottomFooterCombo.setPreferredSize(new Dimension(200, maxElSize));
 
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new MigLayout("nogrid, gap 20"));
@@ -116,19 +107,6 @@ public class MyOptions extends JPanel {
             boolean isSelected = e.getStateChange() == ItemEvent.SELECTED;
             bottomFooterCombo.setEnabled(isSelected);
         });
-
-        rowLable.setFont(font);
-        colLable.setFont(font);
-        roundingText.setFont(font);
-        topHeader.setFont(font);
-        leftHeader.setFont(font);
-        rightFooter.setFont(font);
-        bottomFooter.setFont(font);
-        roundingCheck.setFont(font);
-        rightFooterCombo.setFont(font);
-        bottomFooterCombo.setFont(font);
-        insButton.setFont(font);
-        cancelButton.setFont(font);
 
         add(rowLable);
         add(rowValue);
