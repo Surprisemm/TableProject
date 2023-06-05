@@ -207,7 +207,7 @@ public class MyTableModel extends AbstractTableModel {
 
         colAggregator.reset();
 
-        for (int rowIndex = 0; rowIndex < rowData - 1; rowIndex++) {
+        for (int rowIndex = tableStartRow; rowIndex < rowData - 1; rowIndex++) {
             Object[] row = data[rowIndex];
             if (columnIndex < row.length && row[columnIndex] != null) {
                 colAggregator.addValue(objToDbl(row[columnIndex]));
@@ -225,7 +225,7 @@ public class MyTableModel extends AbstractTableModel {
 
         rowAggregator.reset();
 
-        for (int colIndex = 0; colIndex < colData - 1; colIndex++) {
+        for (int colIndex = tableStartCol; colIndex < colData - 1; colIndex++) {
             Object col = data[rowIndex][colIndex];
             if(col != null) {
                 rowAggregator.addValue(objToDbl(col));

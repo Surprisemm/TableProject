@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="acfd2cd0-522f-4c5b-9311-c49538053e08" name="Changes" comment="Финальный финал">
+    <list default="true" id="acfd2cd0-522f-4c5b-9311-c49538053e08" name="Changes" comment="Финальный финал&#10;баги: Если есть заголовки то количество прибавляет 1 в агрегаторе">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aggregator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainUi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyOptions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyTable.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyTableModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +79,7 @@
       <workItem from="1685655050156" duration="111000" />
       <workItem from="1685706368067" duration="4649000" />
       <workItem from="1685715604604" duration="107000" />
-      <workItem from="1685993181971" duration="4257000" />
+      <workItem from="1685993181971" duration="5061000" />
     </task>
     <task id="LOCAL-00001" summary="commit test">
       <created>1684490461798</created>
@@ -267,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685715513365</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Финальный финал&#10;баги: Если есть заголовки то количество прибавляет 1 в агрегаторе">
+      <created>1685997920715</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1685997920715</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,7 +288,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="MyOptions 50% внешнего вида" />
     <MESSAGE value="MyOptions 54% внешнего вида" />
     <MESSAGE value="MyOptions 56% внешнего вида" />
     <MESSAGE value="MyOptions 70% внешнего вида и функционала" />
@@ -310,6 +312,7 @@
     <MESSAGE value="Финал" />
     <MESSAGE value="Финал 2" />
     <MESSAGE value="Финальный финал" />
-    <option name="LAST_COMMIT_MESSAGE" value="Финальный финал" />
+    <MESSAGE value="Финальный финал&#10;баги: Если есть заголовки то количество прибавляет 1 в агрегаторе" />
+    <option name="LAST_COMMIT_MESSAGE" value="Финальный финал&#10;баги: Если есть заголовки то количество прибавляет 1 в агрегаторе" />
   </component>
 </project>
